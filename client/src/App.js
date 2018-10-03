@@ -14,6 +14,7 @@ class App extends Component {
     API.getWeather("94116")
       .then(res => {
         console.log(res);
+        console.log("tester");
         // this.setState({ list: res.data })
       })
       .catch(err => console.log(err));
