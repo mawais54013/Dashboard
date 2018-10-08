@@ -1,36 +1,22 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import MenuAppBar from "./components/MenuAppBAr";
-import API from "./utils/API";
-import Button from '@material-ui/core/Button';
+import SignIn from './components/Auth/SignIn';
+import Register from "./components/Auth/Register";
 
 class App extends Component {
-  state={
-    list: [],
-    weatherList: ""
-  };
-
-  getWeather = () => {
-    console.log("here");
-    API.getWeather("94116")
-      .then(res => {
-        console.log(res);
-        // this.setState({ list: res.data })
-      })
-      .catch(err => console.log(err));
-  }
   render() {
     return (
+      <Router>
       <div>
-        <MenuAppBar />
-        <h1>Dashboard!</h1>
-        <Button 
-        onClick={() => this.getWeather()}
-        >Get Weather</Button>
-
-        <div>
-          <h1>{this.state.weatherList}</h1>
-        </div>
+        <MenuAppBar>
+        <Switch>
+        <Route path="/register" exact component={Register} />
+        <Route path="/signin" exact component={SignIn} />
+      </Switch>
+        </MenuAppBar>
       </div>
+      </Router>
     );
   }
 }
