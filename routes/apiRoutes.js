@@ -2,6 +2,7 @@ const axios = require("axios");
 const router = require("express").Router();
 const cheerio = require("cheerio");
 const request = require("request");
+const reminderController = require("../controller/reminderController");
 
 // News Scraper
 router.get("/newsScrape", function(req, res) {
