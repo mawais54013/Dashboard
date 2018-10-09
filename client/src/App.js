@@ -4,14 +4,14 @@ import Moment from 'react-moment';
 import MenuAppBar from "./components/MenuAppBAr";
 import API from "./utils/API";
 import PropTypes from 'prop-types';
-import List from '@material-ui/core/List';
+// import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom'
 import Calendar from 'react-calendar';
 // import Grid from '@material-ui/core/Grid';
 import Clock from 'react-clock';
-import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
+// import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
 import TextField from '@material-ui/core/TextField';
 import Paper from '@material-ui/core/Paper';
 
@@ -22,7 +22,7 @@ import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 import "./Card.css";
 
-import TextField from '@material-ui/core/TextField';
+// import TextField from '@material-ui/core/TextField';
 // import Drawer from '@material-ui/core/Drawer';
 import { gitCard } from './components/gitHubJobs/gitHubJobs';
 import List from '@material-ui/core/List';
@@ -130,10 +130,9 @@ setReminder = event => {
   }
 
   getWeather = () => {
-  
     API.getWeather("94116")
       .then(res => {
-        console.log("tester");
+        console.log(res);
         this.setState({ weathers: "http://openweathermap.org/img/w/" + res.data.list[0].weather[0].icon + ".png"});
         for(var i = 4; i < 9; i++)
         {   
