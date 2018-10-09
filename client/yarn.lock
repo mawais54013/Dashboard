@@ -8269,6 +8269,13 @@ react-scripts@2.0.3:
   optionalDependencies:
     fsevents "1.2.4"
 
+react-toggle-display@^2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/react-toggle-display/-/react-toggle-display-2.2.0.tgz#20a66de23e69d5bd975c4bb3cfeaf18748266c49"
+  integrity sha1-IKZt4j5p1b2XXEuzz+rxh0gmbEk=
+  dependencies:
+    prop-types "^15.5.8"
+
 react-transition-group@^1.2.1:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/react-transition-group/-/react-transition-group-1.2.1.tgz#e11f72b257f921b213229a774df46612346c7ca6"
