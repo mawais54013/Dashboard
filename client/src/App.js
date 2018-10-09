@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
 import Moment from 'react-moment';
 import MenuAppBar from "./components/MenuAppBAr";
 import API from "./utils/API";
@@ -13,12 +14,21 @@ import Clock from 'react-clock';
 import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
 import TextField from '@material-ui/core/TextField';
 import Paper from '@material-ui/core/Paper';
+
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 import "./Card.css";
+
+import TextField from '@material-ui/core/TextField';
+// import Drawer from '@material-ui/core/Drawer';
+import { gitCard } from './components/gitHubJobs/gitHubJobs';
+import List from '@material-ui/core/List';
+import Divider from '@material-ui/core/Divider';
+
+
 
 
 class App extends Component {
@@ -215,6 +225,34 @@ setReminder = event => {
           value={this.state.date}
         /></Card>
       </div>
+
+      <div>
+        <MuiThemeProvider>
+          <div>
+            <form>
+            <Paper style={{width: '90%', leftMargin: '15px'}} zDepth={1}>
+            
+					<div 
+						style={{marginLeft: '10px'}}
+					>
+						<TextField 
+              placeholder="What needs to be done?"
+							className="AddText" 
+							fullWidth={true}
+							onChange={(e) => this.setState({ inputValue: e.target.value })}
+						>
+						</TextField>
+					</div>
+					</Paper>
+          <br/>
+          <Button
+        onClick={() => this.addReminder()}>
+        Add Reminder</Button>
+            </form>
+          </div>
+        </MuiThemeProvider>
+      </div>
+
       <div>
         <Calendar
           onChange={this.onChange}
