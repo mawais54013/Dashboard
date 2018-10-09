@@ -120,10 +120,9 @@ setReminder = event => {
   }
 
   getWeather = () => {
-  
     API.getWeather("94116")
       .then(res => {
-        console.log("tester");
+        console.log(res);
         this.setState({ weathers: "http://openweathermap.org/img/w/" + res.data.list[0].weather[0].icon + ".png"});
         for(var i = 4; i < 9; i++)
         {   
