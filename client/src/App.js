@@ -5,6 +5,7 @@ import SignIn from './components/Auth/SignIn';
 import Register from "./components/Auth/Register";
 import Dash from "./components/Dash"
 import Test from "./components/Auth/Test";
+import Testing from "./components/Testing";
 import axios from "axios"
 
 class App extends Component {
@@ -62,12 +63,14 @@ class App extends Component {
               <Route path="/register" exact component={MyRegister} />
               <Route path="/signin" exact component={MySignIn} />
               <Route path="/test" exact component={Test} />
+              <Route path="/testing" exact component={Testing} />
             </Switch>
           </MenuAppBar>
         </>
       </Router>
     );
   }
+  
 }
 
 export default App;

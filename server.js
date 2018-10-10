@@ -30,7 +30,7 @@ passport.deserializeUser(User.deserializeUser());
 app.use(routes);
 
 // Connect to the Mongo DB
- mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/dashboard");
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/dashboard");
 
 // Start the API server
 app.listen(PORT, function() {

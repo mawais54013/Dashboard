@@ -19,6 +19,8 @@ import ListItemText from '@material-ui/core/ListItemText';
 import RegisterIcon from '@material-ui/icons/HowToReg';
 import LockIcon from '@material-ui/icons/Input';
 import SendIcon from '@material-ui/icons/Send';
+import HomeIcon from '@material-ui/icons/Home';
+import TestIcon from '@material-ui/icons/BugReport';
 
 const drawerWidth = 240;
 
@@ -135,7 +137,26 @@ class MenuAppBar extends React.Component {
             </IconButton>
           </div>
           <Divider />
-          <List>List options here...</List>
+          <List>
+
+            <Link to="/dash">
+              <ListItem button>
+                <ListItemIcon>
+                  <HomeIcon />
+                </ListItemIcon>
+                <ListItemText primary="Dashboard" />
+              </ListItem>
+            </Link>
+            <Link to="/testing">
+              <ListItem button>
+                <ListItemIcon>
+                  <TestIcon />
+                </ListItemIcon>
+                <ListItemText primary="Testing Components" />
+              </ListItem>
+            </Link>
+
+          </List>
           <Divider />
           <List>
             {this.props.authenticated ?
@@ -166,6 +187,15 @@ class MenuAppBar extends React.Component {
                   </ListItem>
                 </Link>
               </>)}
+
+            <Link to="/test">
+              <ListItem button>
+                <ListItemIcon>
+                  <TestIcon />
+                </ListItemIcon>
+                <ListItemText primary="Testing Login..." />
+              </ListItem>
+            </Link>
           </List>
         </Drawer>
         <main className={classes.content}>
