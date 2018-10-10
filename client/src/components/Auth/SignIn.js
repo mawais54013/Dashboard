@@ -4,8 +4,6 @@ import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import FormControl from '@material-ui/core/FormControl';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
 import FormHelperText from '@material-ui/core/FormHelperText';
@@ -59,42 +57,45 @@ class SignIn extends Component {
         }
     }
 
+    componentWillMount() {
+        if (this.props.authenticated) {
+            this.props.history.push("/dash");
+        }
+    }
+
     handleFormSubmit = event => {
         event.preventDefault();
         let error = {};
-        console.log(this.state.user);
-        if(!this.state.user.username){
+        if (!this.state.user.username) {
             error.username = "Please enter a username";
         }
         //other error checks here...
-        else{
-            axios.post("/auth/login", this.state.user).then(res => console.log(res));
-
+        else {
+            axios.post("/auth/login", this.state.user).then(res => {
+                if (res.status === 200) {
+                    axios.get("/auth/login").then(res => {
+                        // console.log(res.data.user._id);
+                        this.props.login(res.data.user._id);
+                        console.log(this.props)
+                        this.props.history.push("/dash");
+                    })
+                }
+            })
         }
-        this.setState({error: error});
+        this.setState({ error: error });
     }
 
     handleInputChange = event => {
         const { name, value } = event.target;
         let user = this.state.user;
         user[name] = value;
-        if(this.state.error[name]){
+        if (this.state.error[name]) {
             let error = this.state.error;
             error[name] = "";
-            this.setState({error: error});
+            this.setState({ error: error });
         }
 
-        this.setState({ user: user});
-    }
-
-    handleLoginCheck = event => {
-        event.preventDefault();
-        axios.get("/auth/login").then(res => console.log(res));
-    }
-
-    handleLogout = event => {
-        event.preventDefault();
-        axios.get("auth/logout").then(res => console.log(res));
+        this.setState({ user: user });
     }
 
     render() {
@@ -124,12 +125,8 @@ class SignIn extends Component {
                                     autoComplete="current-password"
                                     onChange={this.handleInputChange}
                                 />
-                                {this.state.error.password ? (<FormHelperText error>{this.state.error.password}</FormHelperText>): (null)}
+                                {this.state.error.password ? (<FormHelperText error>{this.state.error.password}</FormHelperText>) : (null)}
                             </FormControl>
-                            <FormControlLabel
-                                control={<Checkbox value="remember" color="primary" />}
-                                label="Remember me"
-                            />
                             <Button
                                 type="submit"
                                 fullWidth
@@ -140,9 +137,6 @@ class SignIn extends Component {
                             >
                                 Sign in
                             </Button>
-                            <Button type="submit" fullWidth variant="raised" color="secondary" className={classes.submit} onClick={this.handleLoginCheck}>Check Login</Button>
-                            <Button type="submit" fullWidth variant="raised" color="default" className={classes.submit} onClick={this.handleLogout}>Logout</Button>
-
                         </form>
                     </Paper>
                 </main>

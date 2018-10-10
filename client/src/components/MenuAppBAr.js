@@ -12,7 +12,13 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import { authItems } from './Auth/DrawerItems';
+import { Link } from "react-router-dom";
+import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
+import RegisterIcon from '@material-ui/icons/HowToReg';
+import LockIcon from '@material-ui/icons/Input';
+import SendIcon from '@material-ui/icons/Send';
 
 const drawerWidth = 240;
 
@@ -131,7 +137,36 @@ class MenuAppBar extends React.Component {
           <Divider />
           <List>List options here...</List>
           <Divider />
-          <List>{authItems}</List>
+          <List>
+            {this.props.authenticated ?
+              (<>
+                <Link to="signin">
+                  <ListItem button onClick={this.props.handleLogout}>
+                    <ListItemIcon>
+                      <SendIcon />
+                    </ListItemIcon>
+                    <ListItemText primary="Logout" />
+                  </ListItem>
+                </Link>
+              </>) : (<>
+                <Link to="/register">
+                  <ListItem button>
+                    <ListItemIcon>
+                      <RegisterIcon />
+                    </ListItemIcon>
+                    <ListItemText primary="Register" />
+                  </ListItem>
+                </Link>
+                <Link to="/signin">
+                  <ListItem button>
+                    <ListItemIcon>
+                      <LockIcon />
+                    </ListItemIcon>
+                    <ListItemText primary="Sign In" />
+                  </ListItem>
+                </Link>
+              </>)}
+          </List>
         </Drawer>
         <main className={classes.content}>
           {this.props.children}

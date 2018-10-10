@@ -1,8 +1,6 @@
 const express = require("express");
 var passport = require('passport');
-const cookieParser = require("cookie-parser");
 const session = require("express-session");
-var LocalStrategy = require('passport-local').Strategy;
 
 const mongoose = require("mongoose");
 const routes = require("./routes");

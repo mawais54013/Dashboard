@@ -7,7 +7,7 @@ import FormControl from '@material-ui/core/FormControl';
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
 import FormHelperText from '@material-ui/core/FormHelperText';
-import RegisterIcon from '@material-ui/icons/AccountCircle';
+import RegisterIcon from '@material-ui/icons/HowToReg';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import withStyles from '@material-ui/core/styles/withStyles';
@@ -71,19 +71,27 @@ class Register extends Component {
 
     else {
       //send to server...
-      axios.post("/auth/register", this.state.user).then(res => console.log(res));
+      axios.post("/auth/register", this.state.user).then(res => {
+        if (res.status === 200) {
+          axios.post("/auth/login", this.state.user).then(res => {
+            if (res.status === 200) {
+              this.props.history.push("/dash");
+            }
+          })
+        }
+      });
     }
-    this.setState({error: error});
+    this.setState({ error: error });
   }
 
   handleInputChange = event => {
     const { name, value } = event.target;
     let user = this.state.user;
     user[name] = value;
-    if(this.state.error[name]){
+    if (this.state.error[name]) {
       let error = this.state.error;
       error[name] = "";
-      this.setState({error: error});
+      this.setState({ error: error });
     }
 
     this.setState({ user: user });
@@ -135,7 +143,7 @@ class Register extends Component {
                 className={classes.submit}
                 onClick={this.handleFormSubmit}
               >
-                Sign in
+                Register
             </Button>
             </form>
           </Paper>
