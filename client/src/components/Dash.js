@@ -1,8 +1,20 @@
 import React, { Component } from 'react';
 import Moment from 'react-moment';
 import API from "../utils/API";
+import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
+import { CssBaseline } from '@material-ui/core';
 
+const styles = theme => ({
+    layout: {
+        width: 'auto',
+        display: 'block', // Fix IE11 issue.
+
+        [theme.breakpoints.up(400 + theme.spacing.unit * 3 * 2)]: {
+            width: 400,
+        },
+    },
+})
 
 class Dash extends Component {
 
@@ -51,13 +63,17 @@ class Dash extends Component {
     }
 
     render() {
+        const { classes, theme } = this.props;
+
         return (
-            <>
-            <div>
+            <React.Fragment>
+                <CssBaseline />
+
+            <main className={classes.layout}>
                 <Button
                     onClick={() => this.getWeather()}
                 >Get Weather</Button>
-                
+                <div>
                     <h2>Current Weather</h2>
                     <img src={this.state.weathers} />
                 </div>
@@ -85,11 +101,11 @@ class Dash extends Component {
                     <Moment format=" hh:mm a  " date={this.state.times[2]} />
                     <Moment format=" hh:mm a  " date={this.state.times[3]} />
                     <Moment format=" hh:mm a  " date={this.state.times[4]} />
-
                 </div>
-            </>
+                </main>
+            </React.Fragment>
         )
     }
 }
 
-export default Dash;
+export default withStyles(styles)(Dash);
