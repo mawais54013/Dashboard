@@ -55,6 +55,12 @@ class App extends Component {
         <SignIn login={this.handleLogin} authenticated={this.state.authenticated} {...props} />
       )
     }
+
+    const MyWeather = (props) => {
+      return(
+        <Weather authenticated={this.state.authenticatd} {...props} />
+      )
+    }
     return (
       <Router>
         <>
@@ -65,7 +71,7 @@ class App extends Component {
               <Route path="/signin" exact component={MySignIn} />
               <Route path="/test" exact component={Test} />
               <Route path="/testing" exact component={Testing} />
-              <Route path="/weather" exact component={Weather} />
+              <Route path="/weather" exact component={MyWeather} />
             </Switch>
           </MenuAppBar>
         </>

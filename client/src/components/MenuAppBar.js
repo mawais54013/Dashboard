@@ -86,14 +86,9 @@ const styles = theme => ({
   content: {
     flexGrow: 1,
     backgroundColor: theme.palette.background.default,
-    padding: theme.spacing.unit * 3,
-  },
-  appBarSpacer: theme.mixins.toolbar,
-  content: {
-    flexGrow: 1,
     marginTop: theme.spacing.unit * 8,
-    padding: theme.spacing.unit * 3,
     overflow: 'auto',
+    padding: theme.spacing.unit * 3,
   },
 });
 
