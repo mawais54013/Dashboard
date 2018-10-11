@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import MenuAppBar from "./components/MenuAppBar";
+import MenuAppBar from "./components/MenuAppBAr";
 import SignIn from './components/Auth/SignIn';
 import Register from "./components/Auth/Register";
 import Dash from "./components/Dash"
 import Test from "./components/Auth/Test";
 import Testing from "./components/Testing";
+import welcome from "./components/Welcome/Welcome";
 import axios from "axios"
 
 class App extends Component {
@@ -59,6 +60,7 @@ class App extends Component {
         <>
           <MenuAppBar authenticated={this.state.authenticated} handleLogout={this.handleLogout}>
             <Switch>
+              <Route exact path="/" component={welcome}/>
               <Route path="/dash" exact component={MyDash}/>
               <Route path="/register" exact component={MyRegister} />
               <Route path="/signin" exact component={MySignIn} />
