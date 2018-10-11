@@ -2,7 +2,6 @@ const axios = require("axios");
 const router = require("express").Router();
 const cheerio = require("cheerio");
 const request = require("request");
-const reminderController = require("../controller/reminderController");
 
 // News Scraper
 router.get("/newsScrape", function(req, res) {
@@ -65,15 +64,6 @@ router.get("/jobScrape", function(req, res) {
       res.send(jobResults);
     });
   });
-
-// Open Weather API
-router.get("/weather", (req, res) => {
-    console.log(req.query)
-  axios
-    .get(`http://api.openweathermap.org/data/2.5/forecast?zip=${req.query.zip},us&units=imperial&APPID=89fbdaee73a055b478d307a1d0d77d1d`)
-    .then(results => res.json(results.data))
-    .catch(err => res.status(422).json(err));
-});
 
 // Github Jobs API
 router.get("/jobs", (req, res) => {

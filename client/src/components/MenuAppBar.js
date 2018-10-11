@@ -89,6 +89,7 @@ const styles = theme => ({
     marginTop: theme.spacing.unit * 8,
     overflow: 'auto',
     padding: theme.spacing.unit * 3,
+    
   },
 });
 
@@ -213,10 +214,8 @@ class MenuAppBar extends React.Component {
           </List>
         </Drawer>
         <main className={classes.content}>
-        <div className={classes.appBarSpacer}>
 
           {this.props.children}
-          </div>
         </main>
       </div>
     );

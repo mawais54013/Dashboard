@@ -11,15 +11,15 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import TextField from '@material-ui/core/TextField';
+import Grid from '@material-ui/core/Grid';
 
 const styles = theme => ({
     layout: {
-        width: 'auto',
+        width: "auto",
         display: 'block', // Fix IE11 issue.
-        [theme.breakpoints.up(400 + theme.spacing.unit * 3 * 2)]: {
-            width: 400,
-        },
+
     },
+
     fab: {
         position: 'absolute',
         bottom: theme.spacing.unit * 10,
@@ -42,7 +42,7 @@ class Weather extends Component {
 
         }
         else {
-
+            this.setState({locations: ["94116", "48182"]});
         }
     }
 
@@ -79,20 +79,19 @@ class Weather extends Component {
         return (
             <React.Fragment>
                 <CssBaseline />
-                <main className={classes.layout}>
                     <Button
                         onClick={() => this.getWeather()}
                     >Get Weather</Button>
 
-                    {this.state.locations.length > 0 ? 
-                        (this.state.locations.map(zipcode => 
-                             <WeatherIC zip={zipcode} />
-                        )
-                    ) :
-                            <WeatherIC zip="94114" />
+                    <Grid container spacing={8} alignItems="flex-start" className={classes.informationCard}>
 
-                        
-                    }
+                            {this.state.locations.map(zipcode =>
+                                <Grid item xs={12} md={6} lg={4} xl={3}>
+                        <WeatherIC zip={zipcode} />
+                                </Grid>
+                            )
+                            }
+                    </Grid>
 
                     <Button variant="fab" color="primary" aria-label="Add" className={classes.fab} onClick={this.handleClickOpen}>
                         <AddIcon />
@@ -127,7 +126,6 @@ class Weather extends Component {
                             </Button>
                         </DialogActions>
                     </Dialog>
-                </main>
             </React.Fragment>
         )
 
