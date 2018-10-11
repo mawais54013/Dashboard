@@ -6,6 +6,7 @@ import Register from "./components/Auth/Register";
 import Dash from "./components/Dash"
 import Test from "./components/Auth/Test";
 import Testing from "./components/Testing";
+import Weather from "./components/Weather";
 import axios from "axios"
 
 class App extends Component {
@@ -64,6 +65,7 @@ class App extends Component {
               <Route path="/signin" exact component={MySignIn} />
               <Route path="/test" exact component={Test} />
               <Route path="/testing" exact component={Testing} />
+              <Route path="/weather" exact component={Weather} />
             </Switch>
           </MenuAppBar>
         </>
