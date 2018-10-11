@@ -6,7 +6,11 @@ import Register from "./components/Auth/Register";
 import Dash from "./components/Dash"
 import Test from "./components/Auth/Test";
 import Testing from "./components/Testing";
+<<<<<<< HEAD
 import welcome from "./components/Welcome/Welcome";
+=======
+import Weather from "./components/Weather";
+>>>>>>> 87bbfad106e4e550e487bd6e631ce14ecbf4a8ce
 import axios from "axios"
 
 class App extends Component {
@@ -55,6 +59,12 @@ class App extends Component {
         <SignIn login={this.handleLogin} authenticated={this.state.authenticated} {...props} />
       )
     }
+
+    const MyWeather = (props) => {
+      return(
+        <Weather authenticated={this.state.authenticatd} {...props} />
+      )
+    }
     return (
       <Router>
         <>
@@ -66,6 +76,7 @@ class App extends Component {
               <Route path="/signin" exact component={MySignIn} />
               <Route path="/test" exact component={Test} />
               <Route path="/testing" exact component={Testing} />
+              <Route path="/weather" exact component={MyWeather} />
             </Switch>
           </MenuAppBar>
         </>
