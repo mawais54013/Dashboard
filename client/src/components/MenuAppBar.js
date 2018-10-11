@@ -21,6 +21,7 @@ import LockIcon from '@material-ui/icons/Input';
 import SendIcon from '@material-ui/icons/Send';
 import HomeIcon from '@material-ui/icons/Home';
 import TestIcon from '@material-ui/icons/BugReport';
+import WeatherIcon from '@material-ui/icons/WbSunny';
 
 const drawerWidth = 240;
 
@@ -31,6 +32,7 @@ const styles = theme => ({
     overflow: 'hidden',
     position: 'relative',
     display: 'flex',
+    height: '100vh' ,
   },
   appBar: {
     zIndex: theme.zIndex.drawer + 1,
@@ -84,7 +86,10 @@ const styles = theme => ({
   content: {
     flexGrow: 1,
     backgroundColor: theme.palette.background.default,
+    marginTop: theme.spacing.unit * 8,
+    overflow: 'auto',
     padding: theme.spacing.unit * 3,
+    
   },
 });
 
@@ -147,6 +152,16 @@ class MenuAppBar extends React.Component {
                 <ListItemText primary="Dashboard" />
               </ListItem>
             </Link>
+
+            <Link to="/weather">
+              <ListItem button>
+                <ListItemIcon>
+                  <WeatherIcon />
+                </ListItemIcon>
+                <ListItemText primary="Weather" />
+              </ListItem>
+            </Link>
+
             <Link to="/testing">
               <ListItem button>
                 <ListItemIcon>
@@ -199,6 +214,7 @@ class MenuAppBar extends React.Component {
           </List>
         </Drawer>
         <main className={classes.content}>
+
           {this.props.children}
         </main>
       </div>
