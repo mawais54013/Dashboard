@@ -5,6 +5,7 @@ import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import FormControl from '@material-ui/core/FormControl';
 import Input from '@material-ui/core/Input';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import InputLabel from '@material-ui/core/InputLabel';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import LockIcon from '@material-ui/icons/LockOutlined';
@@ -133,7 +134,7 @@ class SignIn extends Component {
                                 color="primary"
                                 className={classes.submit}
                                 onClick={this.handleFormSubmit}
-                            >
+                            ><Link to="/dash"></Link>
                                 Sign in
                             </Button>
                         </form>
