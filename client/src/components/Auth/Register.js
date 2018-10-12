@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Avatar from '@material-ui/core/Avatar';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import FormControl from '@material-ui/core/FormControl';
@@ -74,7 +75,7 @@ class Register extends Component {
         if (res.status === 200) {
           axios.post("/auth/login", this.state.user).then(res => {
             if (res.status === 200) {
-              this.props.history.push("/dash");
+              this.props.history.push("/userForm");
             }
           })
         }
@@ -141,7 +142,7 @@ class Register extends Component {
                 color="primary"
                 className={classes.submit}
                 onClick={this.handleFormSubmit}
-              >
+              ><Link to="/userForm"></Link>
                 Register
             </Button>
             </form>

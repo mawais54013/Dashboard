@@ -7,6 +7,7 @@ import StepButton from '@material-ui/core/StepButton';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Input from '@material-ui/core/Input';
+import "../userForm/userForm.css";
 
 const styles = theme => ({
   root: {
@@ -22,6 +23,7 @@ const styles = theme => ({
     marginTop: theme.spacing.unit,
     marginBottom: theme.spacing.unit,
   },
+  
 });
 
 function getSteps() {
