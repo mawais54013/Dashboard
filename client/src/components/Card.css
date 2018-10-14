@@ -1,10 +1,19 @@
 #div1
 {
-    width: 150px;
     float: right;
+    position: relative;
     background-color: black;
 }
 #div2
 {
     width: 500px;
+}
+#div3
+{
+    float: left;
+    position: relative; 
+    background-color: black;
+}
+#div4{
+    float: right;
 }

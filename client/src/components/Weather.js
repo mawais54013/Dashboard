@@ -39,7 +39,7 @@ class Weather extends Component {
 
     componentWillMount() {
         if (this.props.authenticated) {
-
+            this.setState({locations: ["94116", "48182"]});
         }
         else {
             this.setState({locations: ["94116", "48182"]});
@@ -79,9 +79,9 @@ class Weather extends Component {
         return (
             <React.Fragment>
                 <CssBaseline />
-                    <Button
+                    {/* <Button
                         onClick={() => this.getWeather()}
-                    >Get Weather</Button>
+                    >Get Weather</Button> */}
 
                     <Grid container spacing={8} alignItems="flex-start" className={classes.informationCard}>
 

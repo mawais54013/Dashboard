@@ -5,10 +5,16 @@ import SignIn from './components/Auth/SignIn';
 import Register from "./components/Auth/Register";
 import Dash from "./components/Dash"
 import Test from "./components/Auth/Test";
+import HorizontalNonLinearStepper from "./components/userForm/userForm"
 import Testing from "./components/Testing";
 import Weather from "./components/Weather";
 import Welcome from "./components/Welcome/Welcome";
-import axios from "axios"
+import News from "./components/News";
+import gitJobs from "./components/GitJobs";
+import HackerJobs from "./components/HackerJobs";
+import Events from "./components/Events";
+import Reminders from "./components/reminder";
+import axios from "axios";
 
 class App extends Component {
   state = {
@@ -59,7 +65,13 @@ class App extends Component {
 
     const MyWeather = (props) => {
       return (
-        <Weather authenticated={this.state.authenticatd} {...props} />
+        <Weather authenticated={this.state.authenticated} {...props} />
+      )
+    }
+
+    const MyNews = (props) => {
+      return (
+      <News authenticated={this.state.authenticated} {...props}/>
       )
     }
 
@@ -75,6 +87,13 @@ class App extends Component {
               <Route path="/test" exact component={Test} />
               <Route path="/testing" exact component={Testing} />
               <Route path="/weather" exact component={MyWeather} />
+              <Route path="/news" exact component={MyNews} />
+              <Route path="/userForm" exact component={HorizontalNonLinearStepper} />
+              <Route path="/hackerJobs" exact component={HackerJobs} />
+              <Route path="/events" exact component={Events} />
+              <Route path="/gitJobs" exact component={gitJobs} />
+              <Route path="/reminders" exact component={Reminders} />
+
             </Switch>
           </MenuAppBar>
         </>

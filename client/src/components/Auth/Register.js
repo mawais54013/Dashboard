@@ -11,6 +11,7 @@ import FormHelperText from '@material-ui/core/FormHelperText';
 import RegisterIcon from '@material-ui/icons/HowToReg';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
+// import userForm from '../userForm/userForm';
 import withStyles from '@material-ui/core/styles/withStyles';
 import axios from "axios";
 
@@ -75,7 +76,7 @@ class Register extends Component {
         if (res.status === 200) {
           axios.post("/auth/login", this.state.user).then(res => {
             if (res.status === 200) {
-              this.props.history.push("/userForm");
+              this.props.history.push('/userForm');
             }
           })
         }
