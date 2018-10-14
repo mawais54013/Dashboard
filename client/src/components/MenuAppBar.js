@@ -22,6 +22,12 @@ import SendIcon from '@material-ui/icons/Send';
 import HomeIcon from '@material-ui/icons/Home';
 import TestIcon from '@material-ui/icons/BugReport';
 import WeatherIcon from '@material-ui/icons/WbSunny';
+import ReminderIcon from '@material-ui/icons/AddAlert';
+import EventIcon from '@material-ui/icons/EventAvailable';
+import NewsIcon from '@material-ui/icons/FormatIndentIncrease';
+import HackerJobsIcon from '@material-ui/icons/LaptopMac';
+import GithubJobsIcon from '@material-ui/icons/DeveloperBoard';
+
 
 const drawerWidth = 240;
 
@@ -153,6 +159,7 @@ class MenuAppBar extends React.Component {
               </ListItem>
             </Link>
 
+            {/* Weather */}
             <Link to="/weather">
               <ListItem button>
                 <ListItemIcon>
@@ -162,14 +169,56 @@ class MenuAppBar extends React.Component {
               </ListItem>
             </Link>
 
-            <Link to="/testing">
+            {/* Reminders */}
+            <Link to="/reminders">
               <ListItem button>
                 <ListItemIcon>
-                  <TestIcon />
+                  <ReminderIcon />
                 </ListItemIcon>
-                <ListItemText primary="Testing Components" />
+                <ListItemText primary="Reminders" />
               </ListItem>
             </Link>
+
+            {/* Events */}
+            <Link to="/events">
+              <ListItem button>
+                <ListItemIcon>
+                  <EventIcon />
+                </ListItemIcon>
+                <ListItemText primary="Local Events" />
+              </ListItem>
+            </Link>
+
+            {/* Hacker News */}
+            <Link to="/news">
+              <ListItem button>
+                <ListItemIcon>
+                  <NewsIcon />
+                </ListItemIcon>
+                <ListItemText primary="Hacker News" />
+              </ListItem>
+            </Link>
+
+            {/* Hacker Jobs */}
+            <Link to="/hackerJobs">
+              <ListItem button>
+                <ListItemIcon>
+                  <HackerJobsIcon />
+                </ListItemIcon>
+                <ListItemText primary="Hacker Jobs" />
+              </ListItem>
+            </Link>
+
+            {/* GitHub Jobs */}
+            <Link to="/gitJobs">
+              <ListItem button>
+                <ListItemIcon>
+                  <GithubJobsIcon />
+                </ListItemIcon>
+                <ListItemText primary="Github Jobs" />
+              </ListItem>
+            </Link>
+
 
           </List>
           <Divider />
