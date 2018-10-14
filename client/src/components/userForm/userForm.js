@@ -36,7 +36,8 @@ function getStepContent(step) {
       return (<div>
         <h5>Enter here</h5>
         <Input id='userName'
-        defaultValue="Your Name"
+        
+        placeholder="Your Name"
         inputProps={{
           'aria-label': 'Description',
         }}
@@ -46,17 +47,20 @@ function getStepContent(step) {
       return (<div>
         <h5>Enter here</h5>
         <Input id='userLocation'
-        defaultValue="Your Location"
+       value = {this.state.location}
+        placeholder="Your Location"
         inputProps={{
           'aria-label': 'Description',
         }}
       />
+      
       </div>);
     case 2:
       return (<div>
         <h5>Enter here</h5>
         <Input id='userInterests'
-        defaultValue="Career Interests"
+        value = {this.state.interest}
+        placeholder="Career Interests"
         inputProps={{
           'aria-label': 'Description',
         }}
@@ -71,7 +75,12 @@ class HorizontalNonLinearStepper extends React.Component {
   state = {
     activeStep: 0,
     completed: {},
+    name: '',
+    location: '',
+    interest: '',
+
   };
+
 
   totalSteps = () => {
     return getSteps().length;
@@ -79,7 +88,7 @@ class HorizontalNonLinearStepper extends React.Component {
 
   handleNext = () => {
     let activeStep;
-
+    console.log(this.state.name)
     if (this.isLastStep() && !this.allStepsCompleted()) {
       // It's the last step, but not all steps have been completed,
       // find the first step that has been completed

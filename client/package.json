@@ -12,6 +12,7 @@
     "moment": "^2.22.2",
     "prop-types": "^15.6.2",
     "react": "^16.5.2",
+    "react-agenda": "^0.0.7",
     "react-calendar": "^2.17.4",
     "react-clock": "^2.3.0",
     "react-dom": "^16.5.2",
