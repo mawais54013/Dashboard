@@ -98,8 +98,11 @@ class Weather extends Component {
 
     render() {
         const { classes } = this.props;
-
+        const icons = [];
+        // LOOP THROUGH WEATHER API RETURN TO POPULATE icons WITH ICON NAME
+        
         return (
+          // this.state.eventList.map(elem => { 
             // <React.Fragment>
             <div className="weather-background">
                 <CssBaseline />
@@ -111,7 +114,7 @@ class Weather extends Component {
 
                             {this.state.locations.map(location =>
                                 <Grid item xs={12} md={6} lg={4} xl={3}>
-                        <WeatherIC zip={location.zip} favorite={location.favorite}/>
+                        <WeatherIC icons={icons} zip={location.zip} favorite={location.favorite}/>
                                 </Grid>
                             )
                             }
@@ -152,8 +155,9 @@ class Weather extends Component {
                     </Dialog>
             {/* </React.Fragment> */}
             </div>
+          
         )
-
+      
     }
 }
 
