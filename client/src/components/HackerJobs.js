@@ -34,8 +34,9 @@ class hackJobs extends Component {
         // });
         API.getHackerJobs()
             .then(res => {
-                console.log(res.data[0].title);
-                this.setState({ hackJob: res.data[0].title })
+                console.log('hey there');
+                this.setState({ hackJob: res.data})
+                console.log(this.state.hackJob);
             })
     };
     handleClickOpen = () => {
@@ -48,15 +49,18 @@ class hackJobs extends Component {
 
     render() {
         return (
-            <Card>
-                <CardHeader title="Jobs From HackerNews"/>
+          this.state.hackJob.map(elem => {
+            return <Card>
+            <CardHeader title={elem.title}/>
 
-                <CardContent>
-                    <Typography>
-                        {this.state.hackJob}
-                    </Typography>
-                </CardContent>
-            </Card>
+            <CardContent>
+                <Typography>
+                    {elem.link}
+                </Typography>
+            </CardContent>
+        </Card>
+        
+          })
           );
     }
 }
