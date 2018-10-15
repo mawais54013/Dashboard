@@ -79,11 +79,7 @@ class allEvents extends Component {
 
     render() {
         return (
-<<<<<<< HEAD
-          
-=======
-            
->>>>>>> 95ee464663a168748716b73e62658dbc2416151f
+
             this.state.eventList.map(elem => {
               return <Card >
               <CardActionArea>
