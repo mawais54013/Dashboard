@@ -13,6 +13,7 @@ import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import withStyles from '@material-ui/core/styles/withStyles';
 import axios from "axios";
+import "./signin.css";
 
 const styles = theme => ({
     layout: {
@@ -22,6 +23,7 @@ const styles = theme => ({
         marginRight: theme.spacing.unit * 3,
         [theme.breakpoints.up(400 + theme.spacing.unit * 3 * 2)]: {
             width: 400,
+            height: 600,
             marginLeft: 'auto',
             marginRight: 'auto',
         },
@@ -102,8 +104,8 @@ class SignIn extends Component {
         const { classes } = this.props;
 
         return (
-            <React.Fragment>
-                <CssBaseline />
+            <div className="signin-background">
+                <CssBaseline/>
                 <main className={classes.layout}>
                     <Paper className={classes.paper}>
                         <Avatar className={classes.avatar}>
@@ -140,7 +142,7 @@ class SignIn extends Component {
                         </form>
                     </Paper>
                 </main>
-            </React.Fragment>
+            </div>
         );
     }
 }

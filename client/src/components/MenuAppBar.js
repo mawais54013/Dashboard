@@ -44,6 +44,7 @@ const styles = theme => ({
     transition: theme.transitions.create(['width', 'margin'], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
+    
     }),
   },
   appBarShift: {
@@ -115,8 +116,9 @@ class MenuAppBar extends React.Component {
     const { classes, theme } = this.props;
 
     return (
-      <div className={classes.root}>
+      <div className={classes.root} >
         <AppBar
+        style={{backgroundColor: 'black'}}
           position="absolute"
           className={classNames(classes.appBar, this.state.open && classes.appBarShift)}
         >

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 import "../Welcome/Welcome.css";
 import anime from 'animejs';
+import Particles from 'react-particles-js';
 
 // const restart = document.querySelector(".button-restart");
 const logoAnimation = anime.timeline({ 
@@ -44,31 +45,31 @@ logoAnimation.add({
 
 // restart.addEventListener("click", () => logoAnimation.restart());
 class Welcome extends Component {
-//   state = {
-//         userID: "",
-//         authenticated: false
-//       }
+  // state = {
+  //       userID: "",
+  //       authenticated: false
+  //     }
 
-//       componentWillMount() {
-//         axios.get("/auth/login").then(res => {
-//           let user = res.data.user;
-//           if(res.status === 200 && user){
-//             this.setState({userID: res.data.user._id, authenticated: true})
-//           }
-//         });
-//       }
+  //     componentWillMount() {
+  //       axios.get("/auth/login").then(res => {
+  //         let user = res.data.user;
+  //         if(res.status === 200 && user){
+  //           this.setState({userID: res.data.user._id, authenticated: true})
+  //         }
+  //       });
+  //     }
 
-//       handleLogin = id => {
-//           this.setState({ userID: id, authenticated: true });
-//         };
+  //     handleLogin = id => {
+  //         this.setState({ userID: id, authenticated: true });
+  //       };
 
-//         handleLogout = () => {
-//             axios.get("auth/logout").then(res => {
-//               if(res.status === 200){
-//                 this.setState({ userID: "", authenticated: false });
-//               }
-//             });
-//           };
+  //       handleLogout = () => {
+  //           axios.get("auth/logout").then(res => {
+  //             if(res.status === 200){
+  //               this.setState({ userID: "", authenticated: false });
+  //             }
+  //           });
+  //         };
 
     render() {
         // const MyRegister = (props) => {
@@ -83,41 +84,108 @@ class Welcome extends Component {
         //     )
         //   }
         return(
-            <div class="welcome-background">
-                <div>
-               <div class="site-logo">
-                <figure id="logo">
-                <svg width="100%" height="100%" viewBox="0 0 148 128">
-                    <defs>
-                    <mask id="circle-mask">
-                        <rect fill="white" width="100%" height="100%"></rect>
-                        <circle id="logo-mask" fill="black" cx="120" cy="96" r="28"></circle>
-                    </mask>
-                    </defs>
-                    <polygon id="logo-hexagon" fill="#216c83" points="64 128 8.574 96 8.574 32 64 0 119.426 32 119.426 96" mask="url(#circle-mask)"></polygon>
-                    <circle id="logo-circle" fill="#3F3C3C" cx="120" cy="96" r="20"></circle>
-                </svg> 
-                </figure>
-                <div class="site-title">
-                <div id="logo-text" class="site-title-text">
-                    Dash<span>Board</span>
-                </div>
-                </div>
-                </div> 
+
+<div className="App">
+<div>
+  <Particles className="visibleInBack"
+        params={{
+            particles: {
+                line_linked: {
+                    color: "#ff78ff",
+
+                },
+                number:{
+                    value:120,
+                },
+                shape:{
+                    type:"circle",
+                },
+                move:
+                    {
+                        enable:true,
+                        speed:6,
+                    }
+            }
+            ,
+            interactivity: {
+                "detect_on": "canvas",
+                "events": {
+                    "onhover": {
+                        "enable": true,
+                        "mode": "repulse"
+                    },
+                    "onclick": {
+                        "enable": true,
+                        "mode": "push"
+                    },
+                    "resize": true
+                },
+                "modes": {
+                    "grab": {
+                        "distance": 50,
+                        "line_linked": {
+                            "opacity": 1
+                        }
+                    },
+                    "bubble": {
+                        "distance": 400,
+                        "size": 200,
+                        "duration": 2,
+                        "opacity": 8,
+                        "speed": 5
+                    },
+                    "repulse": {
+                        "distance": 200,
+                        "duration": 0.4
+                    },
+                    "push": {
+                        "particles_nb": 300
+                    },
+                    "remove": {
+                        "particles_nb": 10
+                    }
+                }
+            },
+            detect_on:"canvas",
+        }}
+        style={{
+            width: '100%',
+            backgroundColor: "black"
+        }}
+/>
+</div>
+<div className="overlap">
+{/* <div> */}
+                <div class="site-logo">
+                 <figure id="logo">
+                 <svg width="100%" height="100%" viewBox="0 0 148 128">
+                     <defs>
+                     <mask id="circle-mask">
+                         <rect fill="white" width="100%" height="100%"></rect>
+                         <circle id="logo-mask" fill="black" cx="120" cy="96" r="28"></circle>
+                     </mask>
+                     </defs>
+                     <polygon id="logo-hexagon" fill="#216c83" points="64 128 8.574 96 8.574 32 64 0 119.426 32 119.426 96" mask="url(#circle-mask)"></polygon>
+                     <circle id="logo-circle" fill="#3F3C3C" cx="120" cy="96" r="20"></circle>
+                 </svg> 
+                 </figure>
+                 <div class="site-title">
+                 <div id="logo-text" class="site-title-text">
+                     Dash<span>Board</span>
+                 </div>
+                 </div>
+                 </div> 
                
 
-                <div>
-                      {/* <button class="button-signup"><Link to="/">Home</Link></button> */}
-                      {/* <Link to="/signin" exact component={MySignIn}><button class="button-restart">Login</button></Link>  
-                      <Link to="/register" exact component={MyRegister}><button class="button-restart">Register</button></Link>            */}
-                 {/* <MenuAppBar authenticated={this.state.authenticated} handleLogout={this.handleLogout}> */}
+                 <div>
                    
-                   <Link to="/signin"><button class="button-restart">Login</button></Link>  
-                   <Link to="/register"><button class="button-restart">Register</button></Link>  
+                    <Link to="/signin"><button class="button-restart">Login</button></Link>  
+                    <Link to="/register"><button class="button-restart">Register</button></Link>  
                  {/* </MenuAppBar> */}
                 </div>
-                </div>
-            </div>
+        {/* </div> */}
+</div>
+</div>
             
         )
     }

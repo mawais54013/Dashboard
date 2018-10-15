@@ -14,6 +14,7 @@ import Typography from '@material-ui/core/Typography';
 // import userForm from '../userForm/userForm';
 import withStyles from '@material-ui/core/styles/withStyles';
 import axios from "axios";
+import "./register.css";
 
 const styles = theme => ({
   layout: {
@@ -23,6 +24,7 @@ const styles = theme => ({
     marginRight: theme.spacing.unit * 3,
     [theme.breakpoints.up(400 + theme.spacing.unit * 3 * 2)]: {
       width: 400,
+      height: 600,
       marginLeft: 'auto',
       marginRight: 'auto',
     },
@@ -100,7 +102,7 @@ class Register extends Component {
     const { classes } = this.props;
 
     return (
-      <React.Fragment>
+      <div className="register-background">
         <CssBaseline />
         <main className={classes.layout}>
           <Paper className={classes.paper}>
@@ -147,7 +149,7 @@ class Register extends Component {
             </form>
           </Paper>
         </main>
-      </React.Fragment>
+      </div>
     );
   }
 }

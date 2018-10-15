@@ -9,6 +9,7 @@ import Button from '@material-ui/core/Button';
 import Agenda from './agenda';
 import './agenda.css'
 import { CssBaseline } from '@material-ui/core';
+import './dash.css'
 
 
 const styles = theme => ({
@@ -53,14 +54,17 @@ class Dash extends Component {
     render() {
         const { classes, theme } = this.props;
         return (
-            <React.Fragment>
+            <div className="dash-background">
                 <CssBaseline />
-                {/* <div >
+                <div id="div2">
                     <Calendar
                     onChange={this.onChange}
                     value={this.state.date}
                     />
-                </div> */}
+                </div>
+                <br></br>
+                <br></br>
+              
                 
                 <div id="div1">
                 <Card> <Clock
@@ -68,19 +72,21 @@ class Dash extends Component {
                     /></Card>
                 </div>
               
-                <div id="div3">
+                {/* <div id="div3">
                     <Calendar
                     onChange={this.onChange}
                     value={this.state.date}
                     />
-                </div>
-                
+                </div> */}
+        
+                <div id="div3">
                 <Card>
                 <Agenda/>
                 </Card>
+                </div>
                 
                
-            </React.Fragment>
+            </div>
             
         )
     }

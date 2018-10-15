@@ -11,7 +11,8 @@ import StepLabel from '@material-ui/core/StepLabel';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import NameForm from './NameForm';
-import LocationForm from './LocationForm';
+import LocationForm from './LocationForm'
+import "../userForm/nameForm.css"
 import CareerForm from './CareerForm';
 
 const styles = theme => ({
@@ -24,6 +25,7 @@ const styles = theme => ({
     marginRight: theme.spacing.unit * 2,
     [theme.breakpoints.up(600 + theme.spacing.unit * 2 * 2)]: {
       width: 600,
+      height: 700,
       marginLeft: 'auto',
       marginRight: 'auto',
     },
@@ -99,7 +101,7 @@ class HorizontalNonLinearStepper extends React.Component {
     const { activeStep } = this.state;
 
     return (
-      <React.Fragment>
+      <div className="user-background">
         <main className={classes.layout}>
           <Paper className={classes.paper}>
             <Typography component="h1" variant="h4" align="center">
@@ -141,7 +143,7 @@ class HorizontalNonLinearStepper extends React.Component {
             </React.Fragment>
           </Paper>
         </main>
-      </React.Fragment>
+      </div>
     );
   }
 }

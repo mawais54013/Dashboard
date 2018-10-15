@@ -1,15 +1,11 @@
 import React, { Component } from "react";
 import API from "../utils/API";
 import { withStyles } from '@material-ui/core/styles';
-import CssBaseline from '@material-ui/core/CssBaseline';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Card from '@material-ui/core/Card';
-import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-
 import PropTypes from 'prop-types';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardMedia from '@material-ui/core/CardMedia';
@@ -83,6 +79,7 @@ class allEvents extends Component {
 
     render() {
         return (
+<<<<<<< HEAD
             <React.Fragment>
                 <CssBaseline />
                 <Card>
@@ -128,6 +125,40 @@ class allEvents extends Component {
 
 
         );
+=======
+
+            this.state.eventList.map(elem => {
+              return <Card >
+              <CardActionArea>
+                <CardMedia
+                  component="img"
+                  alt="Company Logo"
+                  height="140"
+                  image={elem.company_logo}
+                  title={"Contemplative Reptile"}
+                />
+                <CardContent>
+                <Typography gutterBottom variant="h5" component="h2">
+                    {elem.company}
+                  </Typography>
+                  <Typography gutterBottom variant="h5" component="h2">
+                    {elem.title}
+                  </Typography>
+                  <Typography component="p">
+                    {elem.location}
+                  </Typography>
+                </CardContent>
+              </CardActionArea>
+              <CardActions>
+                <Button size="small" color="primary" onClick={()=>this.openInNewTab(elem.url)}>
+                  Learn More
+                </Button>
+              </CardActions>
+            </Card>
+            })
+            
+          );
+>>>>>>> b6b9668cd3aae22dc963fd8f2dca74620885ef6f
     }
 }
 
