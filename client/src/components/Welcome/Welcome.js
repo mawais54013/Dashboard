@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
-import SignIn from '../Auth/SignIn';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import Register from "../Auth/Register";
+import { Link } from "react-router-dom";
 import "../Welcome/Welcome.css";
 import anime from 'animejs';
-import axios from "axios";
 import Particles from 'react-particles-js';
 
 // const restart = document.querySelector(".button-restart");

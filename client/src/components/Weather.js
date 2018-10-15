@@ -45,24 +45,41 @@ class Weather extends Component {
 
     componentWillMount() {
         if (this.props.authenticated) {
-            this.setState({locations: ["94116", "48182"]});
+            API.getWeatherList().then(res => {
+                let list = [];
+                if(res.data[0]){
+                    list = res.data[0].locations;
+                }
+                console.log(list);
+
+                if(list.length > 0){
+                    this.setState({locations: list});
+                }
+                else{
+                    this.setState({open: true, locations: []});
+                }
+                
+            }, error => {
+                console.log(this.state.locations)
+                this.setState({open: true, locations: []});
+            })
         }
         else {
-            this.setState({locations: ["94116", "48182"]});
+            this.setState({locations: [{zip: "94116", favorite: false }] });
         }
-    }
-
-    getWeather = () => {
-        API.getWeather("94116")
-            .then(res => {
-                console.log(res);
-            })
-            .catch(err => console.log(err));
     }
 
     addLocation = () => {
+        if(this.state.locations.length > 0){
+            console.log("saving location")
+            API.saveWeatherLocation(this.state.zip);
+
+        }
+        else {
+            API.setupWeatherList(this.state.zip);
+        }
         let locations = this.state.locations;
-        locations.push(this.state.zip);
+        locations.push({zip: this.state.zip, favorite: false });
         this.setState({ locations: locations, zip: "", open: false })
     }
 
@@ -92,9 +109,9 @@ class Weather extends Component {
 
                     <Grid container spacing={8} alignItems="flex-start" className={classes.informationCard}>
 
-                            {this.state.locations.map(zipcode =>
+                            {this.state.locations.map(location =>
                                 <Grid item xs={12} md={6} lg={4} xl={3}>
-                        <WeatherIC zip={zipcode} />
+                        <WeatherIC zip={location.zip} favorite={location.favorite}/>
                                 </Grid>
                             )
                             }

@@ -1,3 +1,4 @@
 module.exports = {
-  Reminder: require("./reminder")
+  Reminder: require("./reminder"),
+  Weather: require("./weather")
 };
