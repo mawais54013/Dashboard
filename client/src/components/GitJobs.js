@@ -25,13 +25,13 @@ import CardMedia from '@material-ui/core/CardMedia';
 
 
 const styles = {
-  card: {
-    maxWidth: 345,
-  },
-  media: {
-    // ⚠️ object-fit is not supported by IE11.
-    objectFit: 'cover',
-  },
+    card: {
+        maxWidth: 345,
+    },
+    media: {
+        // ⚠️ object-fit is not supported by IE11.
+        objectFit: 'cover',
+    },
 };
 
 class allEvents extends Component {
@@ -73,12 +73,59 @@ class allEvents extends Component {
         this.setState({ [name]: value });
     }
 
-      openInNewTab = url => {
-      window.open(url, '_blank');
+    openInNewTab = url => {
+        window.open(url, '_blank');
     }
 
     render() {
         return (
+<<<<<<< HEAD
+            <React.Fragment>
+                <CssBaseline />
+                <Card>
+                    <CardHeader title="Jobs" />
+
+                    <CardContent>
+                        <Typography>
+                            {this.state.eventList.map(elem => {
+                                return (<Card >
+                                    <CardActionArea>
+                                        <CardMedia
+                                            component="img"
+                                            alt="Company Logo"
+                                            height="140"
+                                            image={elem.company_logo}
+                                            title={"Contemplative Reptile"}
+                                        />
+                                        <CardContent>
+                                            <Typography gutterBottom variant="h5" component="h2">
+                                                {elem.company}
+                                            </Typography>
+                                            <Typography gutterBottom variant="h5" component="h2">
+                                                {elem.title}
+                                            </Typography>
+                                            <Typography component="p">
+                                                {elem.location}
+                                            </Typography>
+                                        </CardContent>
+                                    </CardActionArea>
+                                    <CardActions>
+                                        <Button size="small" color="primary" onClick={this.openInNewTab(elem.url)}>
+                                            Learn More
+                                        </Button>
+                                    </CardActions>
+                                </Card>)
+                            })
+                            }
+                        </Typography>
+                    </CardContent>
+                </Card>
+            </React.Fragment>
+
+
+
+        );
+=======
 
             this.state.eventList.map(elem => {
               return <Card >
@@ -111,11 +158,12 @@ class allEvents extends Component {
             })
             
           );
+>>>>>>> b6b9668cd3aae22dc963fd8f2dca74620885ef6f
     }
 }
 
 allEvents.propTypes = {
-  classes: PropTypes.object.isRequired,
+    classes: PropTypes.object.isRequired,
 };
 
 export default withStyles(styles)(allEvents);
