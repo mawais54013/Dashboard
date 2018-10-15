@@ -73,6 +73,7 @@ class Result extends Component {
                     <Typography paragraph variant="body2">
                         Today's Forecast:
                         </Typography>
+                        
                 </CardContent>
                 <CardActions className={classes.actions} disableActionSpacing>
                     <IconButton aria-label="Add to favorites">
