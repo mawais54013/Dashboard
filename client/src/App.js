@@ -16,6 +16,7 @@ import Events from "./components/Events";
 import Reminders from "./components/reminder";
 import axios from "axios";
 
+
 class App extends Component {
   state = {
     userID: "",
@@ -28,6 +29,7 @@ class App extends Component {
       if (res.status === 200 && user) {
         this.setState({ userID: res.data.user._id, authenticated: true })
       }
+      console.log(this.state.userID);
     });
 
   }

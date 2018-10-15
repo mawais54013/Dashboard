@@ -36,7 +36,6 @@ class News extends Component {
         // });
         API.getNews()
             .then(res => {
-                
                 this.setState({ news: res.data })
                 console.log(this.state.news);
             })
@@ -63,6 +62,7 @@ class News extends Component {
           </Card>
           
             })
+
           );
     }
 }

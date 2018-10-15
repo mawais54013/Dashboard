@@ -3,8 +3,6 @@ const router = require("express").Router();
 const apiRoutes = require("./api");
 const authRoutes = require("./authRoutes");
 
-
-
 // API Routes
 router.use("/auth", authRoutes);
 router.use("/api", apiRoutes);

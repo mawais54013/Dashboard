@@ -8,6 +8,8 @@ import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+
 import PropTypes from 'prop-types';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardMedia from '@material-ui/core/CardMedia';
@@ -81,6 +83,19 @@ class allEvents extends Component {
 
     render() {
         return (
+            <React.Fragment>
+                <CssBaseline />
+                <Card>
+                    <CardHeader title="Jobs"/>
+
+                    <CardContent>
+                        <Typography>
+                            {/* {this.state.eventList} */}
+                        
+                        </Typography>
+                    </CardContent>
+                </Card>
+            </React.Fragment>
             this.state.eventList.map(elem => {
               return <Card >
               <CardActionArea>
@@ -110,6 +125,7 @@ class allEvents extends Component {
               </CardActions>
             </Card>
             })
+
             
           );
     }

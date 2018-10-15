@@ -34,6 +34,7 @@ class hackJobs extends Component {
         // });
         API.getHackerJobs()
             .then(res => {
+
                 console.log('hey there');
                 this.setState({ hackJob: res.data})
                 console.log(this.state.hackJob);
@@ -61,6 +62,7 @@ class hackJobs extends Component {
         </Card>
         
           })
+
           );
     }
 }
