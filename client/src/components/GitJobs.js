@@ -1,15 +1,11 @@
 import React, { Component } from "react";
 import API from "../utils/API";
 import { withStyles } from '@material-ui/core/styles';
-import CssBaseline from '@material-ui/core/CssBaseline';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Card from '@material-ui/core/Card';
-import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-
 import PropTypes from 'prop-types';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardMedia from '@material-ui/core/CardMedia';
@@ -83,7 +79,11 @@ class allEvents extends Component {
 
     render() {
         return (
+<<<<<<< HEAD
           
+=======
+            
+>>>>>>> 95ee464663a168748716b73e62658dbc2416151f
             this.state.eventList.map(elem => {
               return <Card >
               <CardActionArea>
@@ -107,7 +107,7 @@ class allEvents extends Component {
                 </CardContent>
               </CardActionArea>
               <CardActions>
-                <Button size="small" color="primary" onClick={this.openInNewTab(elem.url)}>
+                <Button size="small" color="primary" onClick={()=>this.openInNewTab(elem.url)}>
                   Learn More
                 </Button>
               </CardActions>

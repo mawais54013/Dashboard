@@ -49,9 +49,11 @@ class Results extends Component {
         API.getEvents(this.props.zip)
         .then(res => {
             console.log(res);
-            let title = "Current Events in " + res.data.results[0].venue.city;
-            this.setState({ title: title })
-            this.setState({ events: res.data.results[0].name})
+            if (res.data.results){
+              let title = "Current Events in " + res.data.results[0].venue.city;
+              this.setState({ title: title })
+              this.setState({ events: res.data.results[0].name})
+            }
         })
         .catch(err => console.log(err));
     }

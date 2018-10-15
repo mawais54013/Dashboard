@@ -4,7 +4,15 @@ import { withStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Button from '@material-ui/core/Button';
 import AddIcon from '@material-ui/icons/Add'
+<<<<<<< HEAD
 // import EventIC from "./InformationCards/EventIC"
+=======
+import Typography from '@material-ui/core/Typography';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
+import CardActions from '@material-ui/core/CardActions';
+import CardActionArea from '@material-ui/core/CardActionArea';
+>>>>>>> 95ee464663a168748716b73e62658dbc2416151f
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
@@ -39,7 +47,11 @@ class allEvents extends Component {
     }
 
     componentWillMount() {
+<<<<<<< HEAD
         this.eventsListed();
+=======
+       this.eventsListed();
+>>>>>>> 95ee464663a168748716b73e62658dbc2416151f
     }
 
     eventsListed = () => {
@@ -47,7 +59,11 @@ class allEvents extends Component {
             .then(res => {
                 console.log(res);
                 this.setState({ eventList: res.data.results })
+<<<<<<< HEAD
                 console.log(this.state.eventList)
+=======
+                console.log(this.state.eventList);
+>>>>>>> 95ee464663a168748716b73e62658dbc2416151f
             })
             .catch(err => console.log(err));
     };
@@ -70,9 +86,14 @@ class allEvents extends Component {
         this.setState({ [name]: value });
     }
 
+    openInNewTab = url => {
+      window.open(url, '_blank');
+    }
+
     render() {
         const { classes } = this.props;
         return (
+<<<<<<< HEAD
         
             <Card>
             <CardHeader/>
@@ -83,6 +104,27 @@ class allEvents extends Component {
                 </Typography>
             </CardContent>
         </Card>
+=======
+          this.state.eventList.map(elem => {
+            return <Card >
+            <CardActionArea>
+              <CardContent>
+                <Typography gutterBottom variant="h5" component="h2">
+                 {elem.group.name}
+                </Typography>
+                <Typography>
+                 {elem.name}
+                </Typography>
+              </CardContent>
+            </CardActionArea>
+            <CardActions>
+            <Button size="small" color="primary" onClick={()=>this.openInNewTab(elem.event_url)}>
+                Learn More
+              </Button>
+            </CardActions>
+          </Card>
+          })
+>>>>>>> 95ee464663a168748716b73e62658dbc2416151f
           );
     }
 }
