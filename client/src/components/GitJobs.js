@@ -8,6 +8,7 @@ import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 const styles = theme => ({
     layout: {
@@ -36,7 +37,8 @@ class allEvents extends Component {
         API.getJobs('javascript')
             .then(res => {
                 console.log(res);
-                this.setState({ eventList: res.data[0].title })
+                this.setState({ eventList: res.data })
+                console.log(this.state.eventList)
             })
             .catch(err => console.log(err));
     };
@@ -68,7 +70,8 @@ class allEvents extends Component {
 
                     <CardContent>
                         <Typography>
-                            {this.state.eventList}
+                            {/* {this.state.eventList} */}
+                        
                         </Typography>
                     </CardContent>
                 </Card>

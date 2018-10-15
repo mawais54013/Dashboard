@@ -68,8 +68,6 @@ class Register extends Component {
       error.username = "Username cannot be blank";
     }
     //other input checks here...
-
-
     else {
       //send to server...
       axios.post("/auth/register", this.state.user).then(res => {

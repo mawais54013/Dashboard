@@ -24,3 +24,4 @@ db.Reminder
     console.error(err);
     process.exit(1);
   });
+

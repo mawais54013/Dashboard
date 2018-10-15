@@ -1,105 +1,85 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
+import withStyles from '@material-ui/core/styles/withStyles';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Paper from '@material-ui/core/Paper';
 import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
-import StepButton from '@material-ui/core/StepButton';
+import StepLabel from '@material-ui/core/StepLabel';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import Input from '@material-ui/core/Input';
-import "../userForm/userForm.css";
+import NameForm from './NameForm';
+import LocationForm from './LocationForm';
+import CareerForm from './CareerForm';
 
 const styles = theme => ({
-  root: {
-    width: '90%',
+  appBar: {
+    position: 'relative',
+  },
+  layout: {
+    width: 'auto',
+    marginLeft: theme.spacing.unit * 2,
+    marginRight: theme.spacing.unit * 2,
+    [theme.breakpoints.up(600 + theme.spacing.unit * 2 * 2)]: {
+      width: 600,
+      marginLeft: 'auto',
+      marginRight: 'auto',
+    },
+  },
+  paper: {
+    marginTop: theme.spacing.unit * 3,
+    marginBottom: theme.spacing.unit * 3,
+    padding: theme.spacing.unit * 2,
+    [theme.breakpoints.up(600 + theme.spacing.unit * 3 * 2)]: {
+      marginTop: theme.spacing.unit * 6,
+      marginBottom: theme.spacing.unit * 6,
+      padding: theme.spacing.unit * 3,
+    },
+  },
+  stepper: {
+    padding: `${theme.spacing.unit * 3}px 0 ${theme.spacing.unit * 5}px`,
+  },
+  buttons: {
+    display: 'flex',
+    justifyContent: 'flex-end',
   },
   button: {
-    marginRight: theme.spacing.unit,
+    marginTop: theme.spacing.unit * 3,
+    marginLeft: theme.spacing.unit,
   },
-  completed: {
-    display: 'inline-block',
-  },
-  instructions: {
-    marginTop: theme.spacing.unit,
-    marginBottom: theme.spacing.unit,
-  },
-  
 });
 
-function getSteps() {
-  return ['Name', 'Location', 'Career Interests'];
-}
+const steps = ['Name', 'Location', 'Career Interests'];
 
 function getStepContent(step) {
   switch (step) {
     case 0:
-      return (<div>
-        <h5>Enter here</h5>
-        <Input id='userName'
-        
-        placeholder="Your Name"
-        inputProps={{
-          'aria-label': 'Description',
-        }}
-      />
-      </div>);
+      return <NameForm />;
     case 1:
-      return (<div>
-        <h5>Enter here</h5>
-        <Input id='userLocation'
-       value = {this.state.location}
-        placeholder="Your Location"
-        inputProps={{
-          'aria-label': 'Description',
-        }}
-      />
-      
-      </div>);
+      return <LocationForm />;
     case 2:
-      return (<div>
-        <h5>Enter here</h5>
-        <Input id='userInterests'
-        value = {this.state.interest}
-        placeholder="Career Interests"
-        inputProps={{
-          'aria-label': 'Description',
-        }}
-      />
-      </div>);
+      return <CareerForm />;
     default:
-      return 'Unknown step';
+      throw new Error('Unknown step');
   }
 }
 
 class HorizontalNonLinearStepper extends React.Component {
   state = {
     activeStep: 0,
-    completed: {},
-    name: '',
-    location: '',
-    interest: '',
-
   };
 
-
-  totalSteps = () => {
-    return getSteps().length;
-  };
+  handleFormSubmit = event => {
+  event.preventDefault();
+      this.props.history.push("/dash");
+}
 
   handleNext = () => {
-    let activeStep;
-    console.log(this.state.name)
-    if (this.isLastStep() && !this.allStepsCompleted()) {
-      // It's the last step, but not all steps have been completed,
-      // find the first step that has been completed
-      const steps = getSteps();
-      activeStep = steps.findIndex((step, i) => !(i in this.state.completed));
-    } else {
-      activeStep = this.state.activeStep + 1;
-    }
-    this.setState({
-      activeStep,
-    });
+    this.setState(state => ({
+      activeStep: state.activeStep + 1,
+    }));
   };
 
   handleBack = () => {
@@ -108,109 +88,66 @@ class HorizontalNonLinearStepper extends React.Component {
     }));
   };
 
-  handleStep = step => () => {
-    this.setState({
-      activeStep: step,
-    });
-  };
-
-  handleComplete = () => {
-    const { completed } = this.state;
-    completed[this.state.activeStep] = true;
-    this.setState({
-      completed,
-    });
-    this.handleNext();
-  };
-
   handleReset = () => {
     this.setState({
       activeStep: 0,
-      completed: {},
     });
   };
 
-  completedSteps() {
-    return Object.keys(this.state.completed).length;
-  }
-
-  isLastStep() {
-    return this.state.activeStep === this.totalSteps() - 1;
-  }
-
-  allStepsCompleted() {
-    return this.completedSteps() === this.totalSteps();
-  }
-
   render() {
     const { classes } = this.props;
-    const steps = getSteps();
     const { activeStep } = this.state;
 
     return (
-      <div className={classes.root}>
-        <Stepper nonLinear activeStep={activeStep}>
-          {steps.map((label, index) => {
-            return (
-              <Step key={label}>
-                <StepButton
-                  onClick={this.handleStep(index)}
-                  completed={this.state.completed[index]}
-                >
-                  {label}
-                </StepButton>
-              </Step>
-            );
-          })}
-        </Stepper>
-        <div>
-          {this.allStepsCompleted() ? (
-            <div>
-              <Typography className={classes.instructions}>
-                All steps completed - you&quot;re finished
-              </Typography>
-              <Button onClick={this.handleReset}>Reset</Button>
-            </div>
-          ) : (
-            <div>
-              <Typography className={classes.instructions}>{getStepContent(activeStep)}</Typography>
-              <div>
-                <Button
-                  disabled={activeStep === 0}
-                  onClick={this.handleBack}
-                  className={classes.button}
-                >
-                  Back
-                </Button>
-                <Button
-                  variant="contained"
-                  color="primary"
-                  onClick={this.handleNext}
-                  className={classes.button}
-                >
-                  Next
-                </Button>
-                {activeStep !== steps.length &&
-                  (this.state.completed[this.state.activeStep] ? (
-                    <Typography variant="caption" className={classes.completed}>
-                      Step {activeStep + 1} already completed
-                    </Typography>
-                  ) : (
-                    <Button variant="contained" color="primary" onClick={this.handleComplete}>
-                      {this.completedSteps() === this.totalSteps() - 1 ? 'Finish' : 'Complete Step'}
+      <React.Fragment>
+        <main className={classes.layout}>
+          <Paper className={classes.paper}>
+            <Typography component="h1" variant="h4" align="center">
+              Personalize Your Dashboard
+            </Typography>
+            <Stepper activeStep={activeStep} className={classes.stepper}>
+              {steps.map(label => (
+                <Step key={label}>
+                  <StepLabel>{label}</StepLabel>
+                </Step>
+              ))}
+            </Stepper>
+            <React.Fragment>
+              {activeStep === steps.length ? (
+                <React.Fragment>
+                  <Button onClick={this.handleFormSubmit}>Go To DashBoard</Button>
+                </React.Fragment>
+              ) : (
+                <React.Fragment>
+                  {getStepContent(activeStep)}
+                  <div className={classes.buttons}>
+                    {activeStep !== 0 && (
+                      <Button onClick={this.handleBack} className={classes.button}>
+                        Back
+                      </Button>
+                    )}
+                    <Button
+                      variant="contained"
+                      color="primary"
+                      onClick={this.handleNext}
+                      className={classes.button}
+                    >
+                      {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
                     </Button>
-                  ))}
-              </div>
-            </div>
-          )}
-        </div>
-      </div>
+                    
+                  </div>
+                </React.Fragment>
+              )}
+            </React.Fragment>
+          </Paper>
+        </main>
+      </React.Fragment>
     );
   }
 }
 
 HorizontalNonLinearStepper.propTypes = {
-  classes: PropTypes.object,
+  classes: PropTypes.object.isRequired,
 };
 
 export default withStyles(styles)(HorizontalNonLinearStepper);

@@ -34,8 +34,9 @@ class hackJobs extends Component {
         // });
         API.getHackerJobs()
             .then(res => {
-                console.log(res.data[0].title);
-                this.setState({ hackJob: res.data[0].title })
+                console.log(res.data);
+                this.setState({ hackJob: res.data })
+                console.log(this.state.hackJob);
             })
     };
     handleClickOpen = () => {
@@ -53,7 +54,7 @@ class hackJobs extends Component {
 
                 <CardContent>
                     <Typography>
-                        {this.state.hackJob}
+                        {/* {this.state.hackJob} */}
                     </Typography>
                 </CardContent>
             </Card>

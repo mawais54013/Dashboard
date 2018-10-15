@@ -1,18 +1,6 @@
 import React, { Component } from "react";
 import API from "../utils/API";
 import { withStyles } from '@material-ui/core/styles';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Button from '@material-ui/core/Button';
-import AddIcon from '@material-ui/icons/Add'
-import WeatherIC from "./InformationCards/WeatherIC"
-import Dialog from '@material-ui/core/Dialog';
-import ToggleDisplay from 'react-toggle-display';
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
-import DialogTitle from '@material-ui/core/DialogTitle';
-import TextField from '@material-ui/core/TextField';
-import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
@@ -48,8 +36,9 @@ class News extends Component {
         // });
         API.getNews()
             .then(res => {
-                console.log(res.data[0].title);
-                this.setState({ news: res.data[0].title })
+                console.log(res.data[0]);
+                this.setState({ news: res.data })
+                console.log(this.state.news);
             })
     };
     handleClickOpen = () => {
@@ -67,7 +56,7 @@ class News extends Component {
 
                 <CardContent>
                     <Typography>
-                        {this.state.news}
+                        {/* {this.state.news} */}
                     </Typography>
                 </CardContent>
             </Card>
