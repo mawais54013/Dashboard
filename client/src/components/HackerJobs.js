@@ -1,11 +1,13 @@
 import React, { Component } from "react";
 import API from "../utils/API";
 import { withStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Card from '@material-ui/core/Card';
-import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
+import CardActionArea from '@material-ui/core/CardActionArea';
+
 
 const styles = theme => ({
     layout: {
@@ -48,18 +50,27 @@ class hackJobs extends Component {
         this.setState({ open: false });
     };
 
+    openInNewTab = url => {
+      window.open(url, '_blank');
+    }
+
     render() {
         return (
           this.state.hackJob.map(elem => {
-            return <Card>
-            <CardHeader title={elem.title}/>
-
-            <CardContent>
-                <Typography>
-                    {elem.link}
+            return <Card >
+            <CardActionArea>
+              <CardContent>
+                <Typography gutterBottom variant="h5" component="h2">
+                  {elem.title}
                 </Typography>
-            </CardContent>
-        </Card>
+              </CardContent>
+            </CardActionArea>
+            <CardActions>
+              <Button size="small" color="primary" onClick={()=>this.openInNewTab(elem.link)}>
+                Learn More
+              </Button>
+            </CardActions>
+          </Card>
         
           })
 
