@@ -36,6 +36,7 @@ class Result extends Component {
     state = {
         expanded: false,
         title: "Current Weather in [City]"
+        
 
     };
 
