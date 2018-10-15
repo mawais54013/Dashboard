@@ -4,8 +4,17 @@ export default {
   getWeather: function (query) {
     return axios.get("/api/weather", { params: {"zip": query} });
   },
+  setupWeatherList: function (query) {
+    return axios.post("/api/weather/create", {"zip": query});
+  },
+  getWeatherList: function () {
+    return axios.get("/api/weather/list");
+  },
+  saveWeatherLocation: function (query) {
+    return axios.post("/api/weather/list", {"zip": query});
+  },
 
-    getJobs: function (query) {
+  getJobs: function (query) {
     return axios.get("/api/jobs", { params: { q: query } });
     // return axios.get("/api/jobs");
   },

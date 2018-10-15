@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const weather = new Schema({
-  userID: { type: String, required: true },
+  userID: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
   locations: []
 });
 

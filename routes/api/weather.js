@@ -1,5 +1,6 @@
 const axios = require("axios");
 const router = require("express").Router();
+const Weather = require("../../controller/weatherController");
 
 // Open Weather API
 router.get("/", (req, res) => {
@@ -10,6 +11,10 @@ router.get("/", (req, res) => {
     .catch(err => res.status(422).json(err));
 });
 
+router.post("/create", Weather.create);
 
+router.route("/list")
+  .get(Weather.findAll)
+  .post(Weather.update);
 
 module.exports = router;
