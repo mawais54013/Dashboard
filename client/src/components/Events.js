@@ -4,7 +4,11 @@ import { withStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Button from '@material-ui/core/Button';
 import AddIcon from '@material-ui/icons/Add'
-import EventIC from "./InformationCards/EventIC"
+import Typography from '@material-ui/core/Typography';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
+import CardActions from '@material-ui/core/CardActions';
+import CardActionArea from '@material-ui/core/CardActionArea';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
@@ -33,13 +37,7 @@ class allEvents extends Component {
     }
 
     componentWillMount() {
-        if(this.props.authenticated) {
-
-        } 
-        else 
-        {
-            this.setState({ eventList: ['sanfrancisco']});
-        }
+       this.eventsListed();
     }
 
     eventsListed = () => {
@@ -49,7 +47,8 @@ class allEvents extends Component {
         API.getEvents('sanfrancisco')
             .then(res => {
                 console.log(res);
-                // this.setState({ eventList: res.data.results[0] })
+                this.setState({ eventList: res.data.results })
+                console.log(this.state.eventList);
             })
             .catch(err => console.log(err));
     };
@@ -72,57 +71,32 @@ class allEvents extends Component {
         this.setState({ [name]: value });
     }
 
+    openInNewTab = url => {
+      window.open(url, '_blank');
+    }
+
     render() {
         const { classes } = this.props;
         return (
-            <React.Fragment>
-                <CssBaseline />
-                {/* <Button
-                        onClick={() => this.getEvents()}
-                    >Get Events</Button> */}
-                <Grid container spacing={8} alignItems="flex-start" className={classes.informationCard}>
-
-                    {this.state.eventList.map(place =>
-                        <Grid item xs={12} md={6} lg={4} xl={3}>
-                    <EventIC zip={place} />
-                        </Grid>
-                    )
-                    }
-                </Grid>
-                <Button variant="fab" color="primary" aria-label="Add" className={classes.fab} onClick={this.handleClickOpen}>
-                    <AddIcon />
-                </Button>
-
-                <Dialog
-                    open={this.state.open}
-                    onClose={this.handleClose}
-                    aria-labelledby="form-dialog-title"
-                >
-                    <DialogTitle id="form-dialog-title">Add Location</DialogTitle>
-                    <DialogContent>
-                        <DialogContentText>
-                            To track the weather for a new location enter the name of a city
-                        </DialogContentText>
-                        <TextField
-                            autoFocus
-                            margin="dense"
-                            name="zip"
-                            label="Place"
-                            type="text"
-                            fullWidth
-                            onChange={this.handleInputChange}
-                        />
-                    </DialogContent>
-                    <DialogActions>
-                        <Button onClick={this.handleClose} color="default">
-                            Cancel
-                        </Button>
-                        <Button onClick={this.addLocation} color="primary">
-                            Add
-                        </Button>
-                    </DialogActions>
-                </Dialog>
-            </React.Fragment>
+          this.state.eventList.map(elem => {
+            return <Card >
+            <CardActionArea>
+              <CardContent>
+                <Typography gutterBottom variant="h5" component="h2">
+                 {elem.group.name}
+                </Typography>
+                <Typography>
+                 {elem.name}
+                </Typography>
+              </CardContent>
+            </CardActionArea>
+            <CardActions>
+            <Button size="small" color="primary" onClick={()=>this.openInNewTab(elem.event_url)}>
+                Learn More
+              </Button>
+            </CardActions>
+          </Card>
+          })
           );
     }
 }
