@@ -36,7 +36,6 @@ class News extends Component {
         // });
         API.getNews()
             .then(res => {
-                console.log(res.data[0]);
                 this.setState({ news: res.data })
                 console.log(this.state.news);
             })
@@ -51,15 +50,19 @@ class News extends Component {
 
     render() {
         return (
-            <Card>
-                <CardHeader title="News"/>
+            this.state.news.map(elem => {
+              return <Card>
+              <CardHeader title={elem.title}/>
 
-                <CardContent>
-                    <Typography>
-                        {/* {this.state.news} */}
-                    </Typography>
-                </CardContent>
-            </Card>
+              <CardContent>
+                  <Typography>
+                      {elem.link}
+                  </Typography>
+              </CardContent>
+          </Card>
+          
+            })
+
           );
     }
 }
