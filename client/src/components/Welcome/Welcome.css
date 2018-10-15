@@ -7,12 +7,7 @@
 body {
   margin: 0;
   padding: 0;
-  /* display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-  font-family: "Dosis", sans-serif;
-  color: #3F3C3C; */
+
 }
 .welcome-background{
   background-color: black;
@@ -21,8 +16,7 @@ body {
   justify-content: center;
   min-height: 100vh;
   font-family: "Dosis", sans-serif;
-  /* color: #3F3C3C; */
-  /* min-height: 100vh */
+
 }
 
 .site-logo {
@@ -31,8 +25,7 @@ body {
   animation-name: logo-animation;
   animation-duration: 1s;
   animation-iteration-count: 1;
-  /* -webkit-transform: translateZ(0); 
-          transform: translateZ(0); */
+
 }
 
 @keyframes logo-animation {
@@ -184,3 +177,52 @@ body {
             transform: translateY(-0.0625rem);
     transition-duration: 0s;
   }
+
+
+  @import url('https://fonts.googleapis.com/css?family=Stardos+Stencil');
+  .App {
+    text-align: center;
+  }
+  
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+    height: 80px;
+  }
+  
+  .App-header {
+    background-color: #FFFFFF;
+    height: 150px;
+    padding: 20px;
+    color: white;
+  }
+  
+  .App-title {
+    font-size: 1.5em;
+  }
+  
+  .App-intro {
+    font-size: large;
+  }
+  
+  @keyframes App-logo-spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  .visibleInBack {
+    
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+  
+  }
+  .overlap {
+    position: relative;
+      padding-top: 5%;
+      color: lightblue;
+  font-family: 'Stardos Stencil', cursive;
+    font-size: 40px;
+    font-weight: bold;
+  }
+  
+

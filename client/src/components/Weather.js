@@ -12,12 +12,18 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
+import "./weather.css"
 
 const styles = theme => ({
     layout: {
         width: "auto",
         display: 'block', // Fix IE11 issue.
-
+        [theme.breakpoints.up(400 + theme.spacing.unit * 3 * 2)]: {
+            width: 400,
+            height: 700,
+            marginLeft: 'auto',
+            marginRight: 'auto',
+        },
     },
 
     fab: {
@@ -77,7 +83,8 @@ class Weather extends Component {
         const { classes } = this.props;
 
         return (
-            <React.Fragment>
+            // <React.Fragment>
+            <div className="weather-background">
                 <CssBaseline />
                     {/* <Button
                         onClick={() => this.getWeather()}
@@ -126,7 +133,8 @@ class Weather extends Component {
                             </Button>
                         </DialogActions>
                     </Dialog>
-            </React.Fragment>
+            {/* </React.Fragment> */}
+            </div>
         )
 
     }

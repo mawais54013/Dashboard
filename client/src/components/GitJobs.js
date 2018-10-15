@@ -83,19 +83,7 @@ class allEvents extends Component {
 
     render() {
         return (
-            <React.Fragment>
-                <CssBaseline />
-                <Card>
-                    <CardHeader title="Jobs"/>
-
-                    <CardContent>
-                        <Typography>
-                            {/* {this.state.eventList} */}
-                        
-                        </Typography>
-                    </CardContent>
-                </Card>
-            </React.Fragment>
+          
             this.state.eventList.map(elem => {
               return <Card >
               <CardActionArea>
@@ -125,7 +113,6 @@ class allEvents extends Component {
               </CardActions>
             </Card>
             })
-
             
           );
     }
