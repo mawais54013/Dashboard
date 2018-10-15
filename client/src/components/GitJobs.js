@@ -8,18 +8,33 @@ import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
+import PropTypes from 'prop-types';
+import CardActionArea from '@material-ui/core/CardActionArea';
+import CardMedia from '@material-ui/core/CardMedia';
 
-const styles = theme => ({
-    layout: {
-        width: 'auto',
-        display: 'block',
-    },
-    fab: {
-        position: 'absolute',
-        bottom: theme.spacing.unit * 10,
-        right: theme.spacing.unit * 10,
-    },
-});
+// const styles = theme => ({
+//     layout: {
+//         width: 'auto',
+//         display: 'block',
+//     },
+//     fab: {
+//         position: 'absolute',
+//         bottom: theme.spacing.unit * 10,
+//         right: theme.spacing.unit * 10,
+//     },
+// });
+
+
+
+const styles = {
+  card: {
+    maxWidth: 345,
+  },
+  media: {
+    // ⚠️ object-fit is not supported by IE11.
+    objectFit: 'cover',
+  },
+};
 
 class allEvents extends Component {
     state = {
@@ -36,7 +51,8 @@ class allEvents extends Component {
         API.getJobs('javascript')
             .then(res => {
                 console.log(res);
-                this.setState({ eventList: res.data[0].title })
+                this.setState({ eventList: res.data })
+                console.log(this.state.eventList)
             })
             .catch(err => console.log(err));
     };
@@ -59,22 +75,49 @@ class allEvents extends Component {
         this.setState({ [name]: value });
     }
 
+      openInNewTab = url => {
+      window.open(url, '_blank');
+    }
+
     render() {
         return (
-            <React.Fragment>
-                <CssBaseline />
-                <Card>
-                    <CardHeader title="Jobs"/>
-
-                    <CardContent>
-                        <Typography>
-                            {this.state.eventList}
-                        </Typography>
-                    </CardContent>
-                </Card>
-            </React.Fragment>
+            this.state.eventList.map(elem => {
+              return <Card >
+              <CardActionArea>
+                <CardMedia
+                  component="img"
+                  alt="Company Logo"
+                  height="140"
+                  image={elem.company_logo}
+                  title={"Contemplative Reptile"}
+                />
+                <CardContent>
+                <Typography gutterBottom variant="h5" component="h2">
+                    {elem.company}
+                  </Typography>
+                  <Typography gutterBottom variant="h5" component="h2">
+                    {elem.title}
+                  </Typography>
+                  <Typography component="p">
+                    {elem.location}
+                  </Typography>
+                </CardContent>
+              </CardActionArea>
+              <CardActions>
+                <Button size="small" color="primary" onClick={this.openInNewTab(elem.url)}>
+                  Learn More
+                </Button>
+              </CardActions>
+            </Card>
+            })
             
           );
     }
 }
+
+allEvents.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
+
 export default withStyles(styles)(allEvents);
+
