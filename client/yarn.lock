@@ -6055,6 +6055,11 @@ lodash.camelcase@^4.3.0:
   resolved "https://registry.yarnpkg.com/lodash.camelcase/-/lodash.camelcase-4.3.0.tgz#b28aa6288a2b9fc651035c7711f65ab6190331a6"
   integrity sha1-soqmKIorn8ZRA1x3EfZathkDMaY=
 
+lodash.clonedeep@^4.5.0:
+  version "4.5.0"
+  resolved "https://registry.yarnpkg.com/lodash.clonedeep/-/lodash.clonedeep-4.5.0.tgz#e23f3f9c4f8fbdde872529c1071857a086e5ccef"
+  integrity sha1-4j8/nE+Pvd6HJSnBBxhXoIblzO8=
+
 lodash.debounce@^4.0.8:
   version "4.0.8"
   resolved "https://registry.yarnpkg.com/lodash.debounce/-/lodash.debounce-4.0.8.tgz#82d79bff30a67c4005ffd5e2515300ad9ca4d7af"
@@ -8237,6 +8242,13 @@ react-onclickoutside@^6.5.0:
   version "6.7.1"
   resolved "https://registry.yarnpkg.com/react-onclickoutside/-/react-onclickoutside-6.7.1.tgz#6a5b5b8b4eae6b776259712c89c8a2b36b17be93"
   integrity sha512-p84kBqGaMoa7VYT0vZ/aOYRfJB+gw34yjpda1Z5KeLflg70HipZOT+MXQenEhdkPAABuE2Astq4zEPdMqUQxcg==
+
+react-particles-js@^2.3.0:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/react-particles-js/-/react-particles-js-2.3.0.tgz#2670181eff14f97479b4ae75601f51d9d6c082d7"
+  integrity sha512-QvMLbqGAljhYG8EF3bdqJeIJAdO4Mng6j3yNVKvCn+KstbXYizcwGDzief2olFKHHxFo9C+efu+NFH62sMPvIw==
+  dependencies:
+    lodash.clonedeep "^4.5.0"
 
 react-router-dom@^4.3.1:
   version "4.3.1"

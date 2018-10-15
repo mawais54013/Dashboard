@@ -79,7 +79,7 @@ class allEvents extends Component {
 
     render() {
         return (
-            
+
             this.state.eventList.map(elem => {
               return <Card >
               <CardActionArea>
@@ -109,7 +109,6 @@ class allEvents extends Component {
               </CardActions>
             </Card>
             })
-
             
           );
     }

@@ -1,0 +1,8 @@
+.weather-background
+{
+    /* background-color: rgb(42, 52, 148); */
+    background-image: url("http://static.allbackgrounds.com/bg/weather.jpg");
+    height: 600px;
+    background-size: cover;
+    background-repeat: no-repeat;
+}

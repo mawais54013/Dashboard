@@ -75,32 +75,6 @@ class Results extends Component {
                     </Typography>
                         {this.state.events}
                 </CardContent>
-                <CardActions className={classes.actions} disableActionSpacing>
-                    <IconButton aria-label="Add to favorites">
-                        <FavoriteIcon />
-                    </IconButton>
-                    <IconButton aria-label="Refresh">
-                        <RefreshIcon />
-                    </IconButton>
-                    <IconButton
-                        className={classnames(classes.expand, {
-                            [classes.expandOpen]: this.state.expanded,
-                        })}
-                        onClick={this.handleExpandClick}
-                        aria-expanded={this.state.expanded}
-                        aria-label="Show more"
-                    >
-                        <ExpandMoreIcon />
-                    </IconButton>
-                </CardActions>
-                <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
-                    <CardContent>
-                        <Typography paragraph variant="body2">
-                            Extended Forecast:
-                        </Typography>
-
-                    </CardContent>
-                </Collapse>
             </Card>
         )
     }

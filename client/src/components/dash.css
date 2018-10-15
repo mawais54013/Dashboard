@@ -1,0 +1,8 @@
+.dash-background
+{
+    /* background-color: rgb(42, 52, 148); */
+    background-image: url("https://www.fg-a.com/wallpapers/black-background-retro.jpg");
+    height: 600px;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
