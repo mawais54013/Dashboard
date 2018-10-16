@@ -31,9 +31,23 @@ module.exports = {
             db.Weather
                 .update({userID: req.user}, {$set: {locations: updatedList}})
                 .catch(err => res.status(422).json(err));
-        });
-
-        
-        
+        });  
+    },
+    remove: function(req, res){
+        db.Weather
+        .findOne({userID: req.user})
+        .then(list => {
+            let updatedList = list.locations.filter(location => {
+                if(location.zip != req.body.zip) {
+                    return (location);
+                }
+            })
+                console.log(updatedList)
+            db.Weather
+                .update({userID: req.user}, {$set: {locations: updatedList}})
+                .then(result => res.json(result))
+                .catch(err => res.status(422).json(err));
+        }).catch(err => res.status(422).json(err));
+     
     }
 }

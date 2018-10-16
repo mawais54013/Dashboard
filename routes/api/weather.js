@@ -30,4 +30,6 @@ router.route("/list")
 router.route("/favorite")
   .post(Weather.favorite)
 
+router.post("/remove", Weather.remove);
+
 module.exports = router;

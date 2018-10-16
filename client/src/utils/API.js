@@ -14,7 +14,10 @@ export default {
     return axios.post("/api/weather/list", {"zip": query});
   },
   setWeatherFavorite: function(query){
-    return axios.post("/api/weather/favorite", query)
+    return axios.post("/api/weather/favorite", query);
+  },
+  removeWeatherLocation: function (query) {
+    return axios.post("/api/weather/remove", {"zip": query});
   },
 
   getJobs: function (query) {

@@ -70,7 +70,6 @@ class Weather extends Component {
 
     addLocation = () => {
         if(this.state.locations.length > 0){
-            console.log("saving location")
             API.saveWeatherLocation(this.state.zip);
 
         }
@@ -80,6 +79,25 @@ class Weather extends Component {
         let locations = this.state.locations;
         locations.push({zip: this.state.zip, favorite: false });
         this.setState({ locations: locations, zip: "", open: false })
+    }
+
+    removeLocation = (zip) => {
+        API.removeWeatherLocation(zip).then(
+            API.getWeatherList().then(res => {
+            let list = [];
+            if(res.data[0]){
+                list = res.data[0].locations;
+            }
+            console.log(list);
+
+            if(list.length > 0){
+                this.setState({locations: list});
+            }
+            else{
+                this.setState({open: true, locations: []});
+            }
+            
+        }))
     }
 
     handleClickOpen = () => {
@@ -105,7 +123,7 @@ class Weather extends Component {
 
                             {this.state.locations.map(location =>
                                 <Grid item xs={12} md={6} lg={4} xl={3} key={location.zip}>
-                                    <WeatherIC zip={location.zip} favorite={location.favorite}/>
+                                    <WeatherIC zip={location.zip} favorite={location.favorite} remove={this.removeLocation} />
                                 </Grid>
                             )
                             }

@@ -12,6 +12,7 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import FavoriteIconOutlined from '@material-ui/icons/FavoriteBorderOutlined';
 import RefreshIcon from '@material-ui/icons/Refresh';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import DeleteIcon from '@material-ui/icons/Delete'
 import Grid from '@material-ui/core/Grid';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import API from "../../utils/API";
@@ -54,6 +55,10 @@ class Result extends Component {
         API.setWeatherFavorite({"zip": this.props.zip, "favorite": !this.state.favorite})
         .then(this.setState(state => ({favorite: !state.favorite})))
         .catch(err => console.log(err));
+    };
+
+    handeDeleteClick = () =>{
+        this.props.remove(this.props.zip);
     }
 
     getWeather = () => {
@@ -163,6 +168,10 @@ class Result extends Component {
                         </CardContent>
                     </Collapse>
                     <CardActions className={classes.actions} disableActionSpacing>
+                        <IconButton aria-label="Add to favorites"
+                            onClick={this.handeDeleteClick}>
+                            <DeleteIcon />
+                        </IconButton>
                         <IconButton aria-label="Add to favorites"
                             onClick={this.handleFavoriteClick}>
                             {this.state.favorite ? (<FavoriteIcon color="primary" />) : (<FavoriteIconOutlined color="primary" />)}
