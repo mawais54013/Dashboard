@@ -115,7 +115,9 @@ class Weather extends Component {
 
     render() {
         const { classes } = this.props;
-
+        const icons = [];
+        // LOOP THROUGH WEATHER API RETURN TO POPULATE icons WITH ICON NAME
+        
         return (
             <React.Fragment>
                 <CssBaseline />
@@ -164,7 +166,7 @@ class Weather extends Component {
                     </Dialog>
             </React.Fragment>
         )
-
+      
     }
 }
 

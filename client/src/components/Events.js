@@ -72,7 +72,7 @@ class allEvents extends Component {
         const { classes } = this.props;
         return (
 
-          this.state.eventList.map(elem => {
+         this.state.eventList.map(elem => { 
             return <Card >
             <CardActionArea>
               <CardContent>

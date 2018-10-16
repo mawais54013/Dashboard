@@ -111,8 +111,9 @@ class Result extends Component {
 
     render() {
         const { classes } = this.props;
-
+        
         return (
+          // this.state.eventList.map(elem => { 
             <Card>
                 {this.state.loaded ? (<>
                     <CardHeader
@@ -193,7 +194,7 @@ class Result extends Component {
                     </CardActions>
                 </>) : (<><LinearProgress variant="query" /></>)}
             </Card>
-
+        
         )
     }
 }
