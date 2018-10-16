@@ -29,7 +29,7 @@ class News extends Component {
         news: [],
     }
 
-    componentWillMount() {
+    componentDidMount() {
         this.getNews();
     }
     getNews = () => {

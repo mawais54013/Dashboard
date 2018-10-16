@@ -23,13 +23,12 @@ class App extends Component {
     authenticated: false
   }
 
-  componentWillMount() {
+  componentDidMount() {
     axios.get("/auth/login").then(res => {
       let user = res.data.user;
       if (res.status === 200 && user) {
         this.setState({ userID: res.data.user._id, authenticated: true })
       }
-      console.log(this.state.userID);
     });
 
   }

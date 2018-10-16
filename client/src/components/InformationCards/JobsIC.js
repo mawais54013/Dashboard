@@ -52,7 +52,7 @@ class Result extends Component {
         })
         .catch(err => console.log(err));
     }
-    componentWillMount() {
+    componentDidMount() {
         this.getJobs();
     }
     render() {
