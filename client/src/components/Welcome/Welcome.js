@@ -4,7 +4,6 @@ import "../Welcome/Welcome.css";
 import anime from 'animejs';
 import Particles from 'react-particles-js';
 
-// const restart = document.querySelector(".button-restart");
 const logoAnimation = anime.timeline({ 
   autoplay: true,
   delay: 200
@@ -43,46 +42,8 @@ logoAnimation.add({
   offset: 1000
 })
 
-// restart.addEventListener("click", () => logoAnimation.restart());
 class Welcome extends Component {
-  // state = {
-  //       userID: "",
-  //       authenticated: false
-  //     }
-
-  //     componentWillMount() {
-  //       axios.get("/auth/login").then(res => {
-  //         let user = res.data.user;
-  //         if(res.status === 200 && user){
-  //           this.setState({userID: res.data.user._id, authenticated: true})
-  //         }
-  //       });
-  //     }
-
-  //     handleLogin = id => {
-  //         this.setState({ userID: id, authenticated: true });
-  //       };
-
-  //       handleLogout = () => {
-  //           axios.get("auth/logout").then(res => {
-  //             if(res.status === 200){
-  //               this.setState({ userID: "", authenticated: false });
-  //             }
-  //           });
-  //         };
-
     render() {
-        // const MyRegister = (props) => {
-        //     return (
-        //       <Register login={this.handleLogin} {...props} />
-        //     )
-        //   }
-  
-        //   const MySignIn = (props) => {
-        //     return (
-        //       <SignIn login={this.handleLogin} authenticated={this.state.authenticated} {...props} />
-        //     )
-        //   }
         return(
 
 <div className="App">
@@ -156,7 +117,7 @@ class Welcome extends Component {
 </div>
 <div className="overlap">
 {/* <div> */}
-                <div class="site-logo">
+                <div className="site-logo">
                  <figure id="logo">
                  <svg width="100%" height="100%" viewBox="0 0 148 128">
                      <defs>
@@ -181,9 +142,7 @@ class Welcome extends Component {
                    
                     <Link to="/signin"><button class="button-restart">Login</button></Link>  
                     <Link to="/register"><button class="button-restart">Register</button></Link>  
-                 {/* </MenuAppBar> */}
                 </div>
-        {/* </div> */}
 </div>
 </div>
             

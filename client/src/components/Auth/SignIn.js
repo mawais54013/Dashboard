@@ -59,7 +59,7 @@ class SignIn extends Component {
         }
     }
 
-    componentWillMount() {
+    componentDidMount() {
         if (this.props.authenticated) {
             this.props.history.push("/dash");
         }
@@ -70,6 +70,9 @@ class SignIn extends Component {
         let error = {};
         if (!this.state.user.username) {
             error.username = "Please enter a username";
+        }
+        else if(!this.state.user.password){
+            error.password = "Password cannot be left blank"
         }
         //other error checks here...
         else {
@@ -115,7 +118,7 @@ class SignIn extends Component {
                         <form className={classes.form}>
                             <FormControl margin="normal" required fullWidth>
                                 <InputLabel htmlFor="username">Username</InputLabel>
-                                <Input id="username" name="username" autoComplete="username" autoFocus error={this.state.error.username} onChange={this.handleInputChange} />
+                                <Input id="username" name="username" autoComplete="username" autoFocus error={this.state.error.username > 0} onChange={this.handleInputChange} />
                                 {this.state.error.username ? (<FormHelperText error>{this.state.error.username}</FormHelperText>) : (null)}
                             </FormControl>
                             <FormControl margin="normal" required fullWidth>
@@ -125,6 +128,7 @@ class SignIn extends Component {
                                     type="password"
                                     id="password"
                                     autoComplete="current-password"
+                                    error={this.state.error.password > 0}
                                     onChange={this.handleInputChange}
                                 />
                                 {this.state.error.password ? (<FormHelperText error>{this.state.error.password}</FormHelperText>) : (null)}

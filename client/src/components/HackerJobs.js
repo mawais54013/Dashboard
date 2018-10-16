@@ -27,7 +27,7 @@ class hackJobs extends Component {
         hackJob: [],
     }
 
-    componentWillMount() {
+    componentDidMount() {
         this.hackerJobs();
     }
     hackerJobs = () => {

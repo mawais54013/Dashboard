@@ -41,7 +41,7 @@ class allEvents extends Component {
         place: '',
     }
 
-    componentWillMount() {
+    componentDidMount() {
         this.jobsListed();
     }
 

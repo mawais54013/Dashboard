@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
 import Moment from 'react-moment';
 import API from "../utils/API";
-import PropTypes from 'prop-types';
-import ListItem from '@material-ui/core/ListItem';
 import Button from '@material-ui/core/Button';
 import Calendar from 'react-calendar';
 import Clock from 'react-clock';
@@ -11,15 +9,8 @@ import TextField from '@material-ui/core/TextField';
 import Paper from '@material-ui/core/Paper';
 import ToggleDisplay from 'react-toggle-display';
 import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import Typography from '@material-ui/core/Typography';
-import { withStyles } from '@material-ui/core/styles';
 import "./Card.css";
 
-import { gitCard } from './gitHubJobs/gitHubJobs';
-import List from '@material-ui/core/List';
-import Divider from '@material-ui/core/Divider';
 
 
 
@@ -279,17 +270,17 @@ setReminder = event => {
         <div id="div2">
         <Card><h2>Current Weather</h2>
             {/* {this.getWeather()} */}
-           <img src={this.state.weathers} />
+           <img src={this.state.weathers} alt={this.state.time}/>
            {this.state.title}<br></br>
            {this.state.time}<br></br>
            <div>
             <h2>Weather During the Day</h2>
             
-            <img src={this.state.icons[0]} />
-            <img src={this.state.icons[1]} />
-            <img src={this.state.icons[2]} />
-            <img src={this.state.icons[3]} />
-            <img src={this.state.icons[4]} />
+            <img src={this.state.icons[0]} alt={this.state.times[0]}/>
+            <img src={this.state.icons[1]} alt={this.state.times[1]}/>
+            <img src={this.state.icons[2]} alt={this.state.times[2]}/>
+            <img src={this.state.icons[3]} alt={this.state.times[3]}/>
+            <img src={this.state.icons[4]} alt={this.state.times[4]}/>
             </div><br></br>
             <div>
           <Moment format=" hh:mm a  " date={this.state.times[0]} />

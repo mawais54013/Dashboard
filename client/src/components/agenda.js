@@ -1,7 +1,6 @@
 // @flow
 import React, { Component } from 'react';
-import moment from 'moment';
-import { ReactAgenda , ReactAgendaCtrl, guid , getUnique , getLast , getFirst , Modal } from 'react-agenda';
+import { ReactAgenda , ReactAgendaCtrl, guid , Modal } from 'react-agenda';
 
 var now = new Date();
 
@@ -191,11 +190,6 @@ this.setState({numberOfDays:days})
 
 
   render() {
-
-    var AgendaItem = function(props){
-      console.log( ' item component props' , props)
-      return <div style={{display:'block', position:'absolute' , background:'#FFF'}}>{props.item.name} <button onClick={()=> props.edit(props.item)}>Edit </button></div>
-    }
     return (
 
       <div className="content-expanded ">
