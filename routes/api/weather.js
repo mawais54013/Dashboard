@@ -2,12 +2,25 @@ const axios = require("axios");
 const router = require("express").Router();
 const Weather = require("../../controller/weatherController");
 
+const getCurrentWeather = (zip) => {
+  return axios.get(`http://api.openweathermap.org/data/2.5/weather?zip=${zip},us&units=imperial&APPID=89fbdaee73a055b478d307a1d0d77d1d`)
+
+}
+
+const getForecast = (zip) => {
+  return axios.get(`http://api.openweathermap.org/data/2.5/forecast?zip=${zip},us&units=imperial&APPID=89fbdaee73a055b478d307a1d0d77d1d`)
+
+}
 // Open Weather API
 router.get("/", (req, res) => {
-    console.log(req.query)
-  axios
-    .get(`http://api.openweathermap.org/data/2.5/forecast?zip=${req.query.zip},us&units=imperial&APPID=89fbdaee73a055b478d307a1d0d77d1d`)
-    .then(results => res.json(results.data))
+    console.log(req.query);
+    axios.all([getCurrentWeather(req.query.zip), getForecast(req.query.zip)])
+      .then(axios.spread(function(current, forecast){
+      console.log(current.data);
+      console.log(forecast.data);
+      const combined = {current: current.data, forecast: forecast.data};
+      res.json(combined);  
+      }))
     .catch(err => res.status(422).json(err));
 });
 

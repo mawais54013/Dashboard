@@ -12,7 +12,6 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
-import "./weather.css"
 
 const styles = theme => ({
     layout: {
@@ -43,7 +42,7 @@ class Weather extends Component {
 
     };
 
-    componentWillMount() {
+    componentDidMount() {
         if (this.props.authenticated) {
             API.getWeatherList().then(res => {
                 let list = [];
@@ -67,7 +66,7 @@ class Weather extends Component {
         else {
             this.setState({locations: [{zip: "94116", favorite: false }] });
         }
-    }
+    };
 
     addLocation = () => {
         if(this.state.locations.length > 0){
@@ -100,18 +99,13 @@ class Weather extends Component {
         const { classes } = this.props;
 
         return (
-            // <React.Fragment>
-            <div className="weather-background">
+            <React.Fragment>
                 <CssBaseline />
-                    {/* <Button
-                        onClick={() => this.getWeather()}
-                    >Get Weather</Button> */}
-
                     <Grid container spacing={8} alignItems="flex-start" className={classes.informationCard}>
 
                             {this.state.locations.map(location =>
-                                <Grid item xs={12} md={6} lg={4} xl={3}>
-                        <WeatherIC zip={location.zip} favorite={location.favorite}/>
+                                <Grid item xs={12} md={6} lg={4} xl={3} key={location.zip}>
+                                    <WeatherIC zip={location.zip} favorite={location.favorite}/>
                                 </Grid>
                             )
                             }
@@ -150,8 +144,7 @@ class Weather extends Component {
                             </Button>
                         </DialogActions>
                     </Dialog>
-            {/* </React.Fragment> */}
-            </div>
+            </React.Fragment>
         )
 
     }
