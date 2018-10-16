@@ -80,9 +80,6 @@ class Result extends Component {
                         Today's Forecast: 
                         {/* {this.props.icons.map(elem => <img src={`http://openweathermap.org/img/w/${this.state.icon}.png`} alt="temp-icon"/>)} */}
                         </Typography>
-<<<<<<< HEAD
-                        
-=======
                         <img src = {this.state.weathers}/>
                         <Moment format=" hh:mm a  " date={this.state.time} />
                         <img src = {this.state.weather1}/>
@@ -93,7 +90,6 @@ class Result extends Component {
                         <Moment format=" hh:mm a  " date={this.state.time3} />
                         <img src = {this.state.weather4}/>
                         <Moment format=" hh:mm a  " date={this.state.time4} />
->>>>>>> deaedc3f154b228e3f3acf5f6c62a15b9664d087
                 </CardContent>
                 <CardActions className={classes.actions} disableActionSpacing>
                     <IconButton aria-label="Add to favorites">
