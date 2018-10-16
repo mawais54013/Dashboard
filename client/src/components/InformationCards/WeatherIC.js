@@ -43,7 +43,7 @@ class Result extends Component {
     state = {
         expanded: false,
         loaded: false,
-        favorite: false,
+        favorite: this.props.favorite,
     };
 
     handleExpandClick = () => {
@@ -51,14 +51,15 @@ class Result extends Component {
     };
 
     handleFavoriteClick = () => {
-        this.setState(state => ({favorite: !state.favorite}));
+        API.setWeatherFavorite({"zip": this.props.zip, "favorite": !this.state.favorite})
+        .then(this.setState(state => ({favorite: !state.favorite})))
+        .catch(err => console.log(err));
     }
 
     getWeather = () => {
         API.getWeather(this.props.zip)
             .then(res => {
                 const { current, forecast } = res.data;
-                console.log(forecast);
                 let display = {loaded: true};
 
                 display.name =  current.name;
@@ -79,7 +80,6 @@ class Result extends Component {
                 let times = forecast.list.map(data => {return(moment(data.dt * 1000).format("HH"))})
                 let nearNoon = times.find(time => (time >= 11 && time <= 13));
                 let offset = times.indexOf(nearNoon);
-                console.log(offset);
                 for(let i = 0; i < 5; i++){
                    display.forecast[i] = {day: moment(forecast.list[(i * 8) + offset].dt * 1000).format("dddd")};
                    display.forecast[i].description = forecast.list[(i * 8) + offset].weather[0].main;

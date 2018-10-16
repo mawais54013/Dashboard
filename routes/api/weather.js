@@ -13,11 +13,8 @@ const getForecast = (zip) => {
 }
 // Open Weather API
 router.get("/", (req, res) => {
-    console.log(req.query);
     axios.all([getCurrentWeather(req.query.zip), getForecast(req.query.zip)])
       .then(axios.spread(function(current, forecast){
-      console.log(current.data);
-      console.log(forecast.data);
       const combined = {current: current.data, forecast: forecast.data};
       res.json(combined);  
       }))
@@ -29,5 +26,8 @@ router.post("/create", Weather.create);
 router.route("/list")
   .get(Weather.findAll)
   .post(Weather.update);
+
+router.route("/favorite")
+  .post(Weather.favorite)
 
 module.exports = router;

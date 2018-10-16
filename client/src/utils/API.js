@@ -13,6 +13,9 @@ export default {
   saveWeatherLocation: function (query) {
     return axios.post("/api/weather/list", {"zip": query});
   },
+  setWeatherFavorite: function(query){
+    return axios.post("/api/weather/favorite", query)
+  },
 
   getJobs: function (query) {
     return axios.get("/api/jobs", { params: { q: query } });
