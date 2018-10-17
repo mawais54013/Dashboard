@@ -57,7 +57,7 @@ class Results extends Component {
         })
         .catch(err => console.log(err));
     }
-    componentWillMount() {
+    componentDidMount() {
         this.getEvents();
     }
 
