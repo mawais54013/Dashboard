@@ -31,13 +31,8 @@ class hackJobs extends Component {
         this.hackerJobs();
     }
     hackerJobs = () => {
-        // this.setState({
-        //     showNews: !this.state.show
-        // });
         API.getHackerJobs()
             .then(res => {
-
-                console.log('hey there');
                 this.setState({ hackJob: res.data})
                 console.log(this.state.hackJob);
             })
