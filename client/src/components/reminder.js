@@ -8,6 +8,7 @@ import TextField from '@material-ui/core/TextField';
 import Paper from '@material-ui/core/Paper';
 import { withStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
+import axios from "axios";
 
 
 const styles = theme => ({
@@ -47,6 +48,7 @@ class Reminder extends Component {
             .catch(err => console.log(err));
             console.log(this.state.reminders);
             console.log(this.state.reminders.length);
+            }
     };
 
     handleInputChange = event => {
