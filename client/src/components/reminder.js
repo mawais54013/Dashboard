@@ -103,13 +103,13 @@ class Reminder extends Component {
                                 {/* {this.state.reminders.reminder} */}
 
                                 <div>
-                                {this.state.reminders.reminder}
+                                {/* {this.state.reminders.reminder} */}
                                 {/* <Button>Delete</Button> <Button>Checked</Button> */}
                                     {this.state.reminders.length ? (
                                         <List>
                                             {this.state.reminders.map(elem => (
                                                 <ListItem>
-                                                    {elem}
+                                                    {elem.reminder}
                                                     <Button>Delete</Button>
                                                 </ListItem>
                                             ))}
