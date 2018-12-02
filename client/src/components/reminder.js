@@ -9,7 +9,6 @@ import Paper from '@material-ui/core/Paper';
 import { withStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 
-
 const styles = theme => ({
     layout: {
         width: 'auto',
@@ -42,11 +41,13 @@ class Reminder extends Component {
         API.getReminders()
             .then(res => {
                 console.log(res, "hey this is the response");
-                this.setState({ reminders: [res.data[0].reminder], remain: "" })
-            })
+                this.setState({ reminders: res.data })
+            }).then(
+                console.log(this.state.reminders))
             .catch(err => console.log(err));
-            console.log(this.state.reminders);
-            console.log(this.state.reminders.length);
+            
+            // console.log(this.state.reminders.length);
+       
     };
 
     handleInputChange = event => {
@@ -76,8 +77,9 @@ class Reminder extends Component {
     };
     onChange = date => this.setState({ date })
 
-    render() {
 
+    render() {
+        console.log(this.state.reminders)
         return (
             <React.Fragment>
                 <CssBaseline />
@@ -88,23 +90,22 @@ class Reminder extends Component {
                                 style={{ marginLeft: '10px' }}
                             >
                                 <TextField
-                                    value={this.state.reminder}
+                                
                                     onChange={this.handleInputChange}
                                     placeholder="What needs to be done?"
                                     name="reminder"
                                     fullWidth={true}
-                                // onChange={(e) => this.setState({ inputValue: e.target.value })}
                                 >
                                 </TextField>
                             </div>
                             <div>
                                 <h2>Reminders on my list</h2>
 
-                                {/* {this.state.reminders.reminder} */}
+                            
 
                                 <div>
                                 {/* {this.state.reminders.reminder} */}
-                                {/* <Button>Delete</Button> <Button>Checked</Button> */}
+                               
                                     {this.state.reminders.length ? (
                                         <List>
                                             {this.state.reminders.map(elem => (
@@ -113,14 +114,7 @@ class Reminder extends Component {
                                                     <Button>Delete</Button>
                                                 </ListItem>
                                             ))}
-                                            {/* {this.state.reminders.map((number) =>
-                                                    {
-                                                        <ListItem>
-                                                            {number.reminder}
-                                                        </ListItem>
-                                                    }
-                                                )
-                                            } */}
+                                          
                                         </List>
                                     ) : (
                                             <h3>No Results to Display</h3>
