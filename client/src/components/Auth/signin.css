@@ -1,5 +1,24 @@
 .signin-background
 {
     /* background-color: black; */
-    background-image: url("http://www.un.org/en/events/mountainday/assets/img/featured-image-index.jpg");
+    /* background-image: url("http://www.un.org/en/events/mountainday/assets/img/featured-image-index.jpg"); */
+    animation: colorchange 10s;
+    -webkit-animation: colorchange 50s;
 }
+@keyframes colorchange
+    {
+      0%   {background: black;}
+      25%  {background: rgb(5, 15, 102);}
+      50%  {background: rgb(17, 17, 163);}
+      75%  {background: rgba(5, 20, 233, 0.226);}
+      100% {background: rgb(10, 15, 56);}
+    }
+
+    @-webkit-keyframes colorchange /* Safari and Chrome - necessary duplicate */
+    {
+        0%   {background: black;}
+        25%  {background: rgb(5, 15, 102);}
+        50%  {background: rgb(17, 17, 163);}
+        75%  {background: rgba(5, 20, 233, 0.226);}
+        100% {background: rgb(10, 15, 56);}
+    }

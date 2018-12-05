@@ -82,11 +82,12 @@ class allEvents extends Component {
 
             this.state.eventList.map(elem => {
               return <Card >
-              <CardActionArea>
+              <CardActionArea >
                 <CardMedia
                   component="img"
                   alt="Company Logo"
                   height="140"
+                width="140"
                   image={elem.company_logo}
                   title={"Contemplative Reptile"}
                 />

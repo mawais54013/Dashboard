@@ -14,6 +14,8 @@ import Typography from '@material-ui/core/Typography';
 import withStyles from '@material-ui/core/styles/withStyles';
 import axios from "axios";
 import "./signin.css";
+import anime from 'animejs';
+import Particles from 'react-particles-js';
 
 const styles = theme => ({
     layout: {
@@ -23,7 +25,7 @@ const styles = theme => ({
         marginRight: theme.spacing.unit * 3,
         [theme.breakpoints.up(400 + theme.spacing.unit * 3 * 2)]: {
             width: 400,
-            height: 600,
+            height: 750,
             marginLeft: 'auto',
             marginRight: 'auto',
         },
@@ -108,6 +110,7 @@ class SignIn extends Component {
 
         return (
             <div className="signin-background">
+            
                 <CssBaseline/>
                 <main className={classes.layout}>
                     <Paper className={classes.paper}>
