@@ -24,9 +24,22 @@ const styles = theme => ({
 
 class Reminder extends Component {
 
+    constructor(props) {
+        super(props);
+        this.delete = this.delete.bind(this);
+    }
+    delete(data) {
+        
+        console.log("tester")
+        console.log(data)
+        // API.deleteReminder(data)
+        //     .then(console.log("Deleted"))
+        //     .catch(err => console.log(err))
+    }
     state = {
         open: false,
         reminders: [],
+        deletedReminders: [],
         remain: "",
     };
 
@@ -48,8 +61,16 @@ class Reminder extends Component {
             .catch(err => console.log(err));
             
             // console.log(this.state.reminders.length);
-       
     };
+
+    deleteIt = (data) => {
+        console.log(data)
+        API.deleteReminder(data)
+            .then(console.log("Deleted"))
+            .catch(err => console.log(err))
+            window.location.reload();
+    };
+
 
     handleInputChange = event => {
         const { name, value } = event.target;
@@ -68,6 +89,8 @@ class Reminder extends Component {
                 .catch(err => console.log(err));
         }
     };
+    
+    
 
     handleClickOpen = () => {
         this.setState({ open: true });
@@ -112,7 +135,8 @@ class Reminder extends Component {
                                             {this.state.reminders.map(elem => (
                                                 <ListItem>
                                                     {elem.reminder}
-                                                    <Button>Delete</Button>
+                                                    {/* <Button onClick={this.delete(elem._id)}>Delete</Button> */}
+                                                    <Button onClick={()=>this.deleteIt(elem._id)}>Delete</Button>
                                                 </ListItem>
                                             ))}
                                           
