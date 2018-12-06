@@ -68,7 +68,7 @@ class Reminder extends Component {
         API.deleteReminder(data)
             .then(console.log("Deleted"))
             .catch(err => console.log(err))
-            window.location.reload();
+            window.location.replace("/");
     };
 
 
