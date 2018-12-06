@@ -64,8 +64,6 @@ export default class Agenda extends Component {
   constructor(props){
   super(props);
 
-
-
 this.state = {
   items:[],
   selected:[],
@@ -93,7 +91,6 @@ this.handleCellSelection = this.handleCellSelection.bind(this)
   componentDidMount(){
 
     this.setState({items:items})
-
 
   }
 

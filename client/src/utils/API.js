@@ -46,4 +46,7 @@ export default {
   saveReminder: function(reminderData) {
     return axios.post("/api/reminders", reminderData);
   },
+  deleteReminder: function(reminderInfo) {
+    return axios.delete("/api/reminders/" + reminderInfo);
+  },
 };
